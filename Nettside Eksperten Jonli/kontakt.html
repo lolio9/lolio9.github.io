@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt | Nettside Eksperten Jonli</title>
+    <meta
+      name="description"
+      content="Kontakt meg for en uforpliktende samtale om ditt nettsideprosjekt"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="navbar">
+          <a href="index.html" class="logo"
+            >Nettside Eksperten <strong>Jonli</strong></a
+          >
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="tjenester.html">Tjenester</a></li>
+              <li><a href="om-meg.html">Om meg</a></li>
+              <li><a href="kontakt.html" class="nav-cta active">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Kontakt Seksjon -->
+    <section class="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <h1>Kontakt meg</h1>
+          <p class="section-description">
+            Fyll ut skjemaet under, så tar jeg kontakt så raskt som mulig
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-form">
+            <form
+              id="contactForm"
+              action="https://formspree.io/f/xkgbbqna"
+              method="POST"
+            >
+              <input type="hidden" name="_language" value="no" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="Ny henvendelse fra nettsiden"
+              />
+
+              <div class="form-group">
+                <label for="name">Fullt navn*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  placeholder="Ditt fulle navn"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-post*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="din@epost.no"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telefon (valgfri)</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+47 123 45 678"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Melding*</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  minlength="10"
+                  placeholder="Hva kan jeg hjelpe deg med?"
+                ></textarea>
+              </div>
+
+              <!-- Honey pot for spam -->
+              <input type="text" name="_gotcha" style="display: none" />
+
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                <span id="submitText">Send melding</span>
+                <span id="loadingSpinner" style="display: none"
+                  ><i class="fas fa-spinner fa-spin"></i> Sender...</span
+                >
+              </button>
+
+              <p class="form-note">Felt merket med * er obligatoriske</p>
+            </form>
+          </div>
+
+          <div class="contact-info">
+            <h3>Kontaktinformasjon</h3>
+            <ul class="info-list">
+              <li>
+                <strong>E-post:</strong>
+                <a href="mailto:nettsideekspertenjonli@gmail.com"
+                  >nettsideekspertenjonli@gmail.com</a
+                >
+              </li>
+              <li>
+                <strong>Telefon:</strong>
+                <a href="tel:+4745832647">+47 458 32 647</a>
+              </li>
+              <li>
+                <strong>Adresse:</strong>
+                <span>Trondheim, Norge</span>
+              </li>
+            </ul>
+
+            <h3>Åpningstider</h3>
+            <ul class="hours-list">
+              <li><span>Mandag - Fredag:</span> 09:00 - 16:00</li>
+              <li><span>Lørdag - Søndag:</span> Stengt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content text-center">
+          <a href="index.html" class="logo"
+            >Nettside Eksperten <strong>Jonli</strong></a
+          >
+          <p>Profesjonelle nettsideløsninger siden 2024</p>
+
+          <div class="footer-links">
+            <a href="tjenester.html">Tjenester</a>
+            <a href="om-meg.html">Om meg</a>
+            <a href="kontakt.html">Kontakt</a>
+          </div>
+
+          <p class="copyright">
+            &copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Legg denne koden i bunnen av body, rett før </body> -->
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submitBtn");
+          const submitText = document.getElementById("submitText");
+          const loadingSpinner = document.getElementById("loadingSpinner");
+
+          // Vis laster-indikator
+          submitText.style.display = "none";
+          loadingSpinner.style.display = "inline-block";
+          submitBtn.disabled = true;
+
+          try {
+            console.log("Sender skjema..."); // Debug log
+
+            const response = await fetch(e.target.action, {
+              method: "POST",
+              body: new FormData(e.target),
+              headers: {
+                Accept: "application/json",
+              },
+            });
+
+            console.log("Status:", response.status); // Debug log
+
+            if (response.ok) {
+              // Vis suksessmelding i stedet for alert
+              const successDiv = document.createElement("div");
+              successDiv.className = "form-success";
+              successDiv.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <h3>Takk for meldingen!</h3>
+        <p>Jeg svarer innen 24 timer.</p>
+    `;
+              document.getElementById("contactForm").replaceWith(successDiv);
+            }
+          } finally {
+            // Tilbakestill knapp
+            submitText.style.display = "inline-block";
+            loadingSpinner.style.display = "none";
+            submitBtn.disabled = false;
+          }
+        });
+    </script>
+  </body>
+</html>
