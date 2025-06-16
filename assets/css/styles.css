@@ -125,51 +125,12 @@ body {
   z-index: 1000;
 }
 
-.hamburger-box {
-  width: 30px;
-  height: 24px;
-  display: inline-block;
-  position: relative;
-}
-
-.hamburger-inner {
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.2s;
-}
-
-.hamburger-inner::before,
-.hamburger-inner::after {
-  content: "";
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary);
-  position: absolute;
-  left: 0;
-  transition: transform 0.3s;
-}
-
-.hamburger-inner::before {
-  top: -8px;
-}
-
-.hamburger-inner::after {
-  bottom: -8px;
-}
-
 /* Mobilvisning */
 @media (max-width: 768px) {
-  /* Vis hamburgermeny på mobil */
   .hamburger {
     display: block;
   }
 
-  /* Skjul vanlige navigasjonslenker på mobil */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -190,15 +151,6 @@ body {
   .nav-links.active {
     right: 0;
     display: flex;
-  }
-
-  .nav-links li {
-    margin: 15px 0;
-  }
-
-  /* Juster padding for CTA-knappen på mobil */
-  .nav-cta {
-    padding: 0.8rem 1.5rem;
   }
 }
 
