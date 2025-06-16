@@ -177,6 +177,10 @@
         hamburger.addEventListener("click", toggleMenu);
         closeMenu.addEventListener("click", toggleMenu);
         overlay.addEventListener("click", toggleMenu);
+
+        navLinks.addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
       });
     </script>
   </body>
