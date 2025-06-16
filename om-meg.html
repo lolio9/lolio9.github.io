@@ -75,17 +75,17 @@
             <span class="hamburger-inner"></span>
           </span>
         </button>
-
-        <!-- Mobilmeny (kun for mobil) -->
-        <nav class="mobile-nav">
-          <ul class="nav-links">
-            <li><a href="index.html">Hjem</a></li>
-            <li><a href="tjenester.html">Tjenester</a></li>
-            <li><a href="om-meg.html">Om meg</a></li>
-            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
-          </ul>
-        </nav>
       </div>
+
+      <!-- Mobilmeny (kun for mobil) -->
+      <nav class="mobile-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Hjem</a></li>
+          <li><a href="tjenester.html">Tjenester</a></li>
+          <li><a href="om-meg.html">Om meg</a></li>
+          <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Hero Section -->
@@ -276,18 +276,10 @@
       document.addEventListener("DOMContentLoaded", function () {
         const hamburger = document.querySelector(".hamburger");
         const mobileNav = document.querySelector(".mobile-nav");
-        const overlay = document.createElement("div");
-        overlay.className = "overlay";
-        document.body.appendChild(overlay);
 
-        // Toggle mobilmeny
         hamburger.addEventListener("click", function () {
           hamburger.classList.toggle("active");
           mobileNav.classList.toggle("active");
-          overlay.classList.toggle("active");
-          document.body.style.overflow = mobileNav.classList.contains("active")
-            ? "hidden"
-            : "";
         });
 
         // Lukk meny ved klikk på overlay
