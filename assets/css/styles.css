@@ -225,7 +225,7 @@ body {
 }
 
 /* Overlay for mobilmeny */
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -241,7 +241,7 @@ body {
 .overlay.active {
   opacity: 1;
   visibility: visible;
-}
+} */
 
 /* Hamburgermeny animasjon */
 .hamburger.active .hamburger-inner {
