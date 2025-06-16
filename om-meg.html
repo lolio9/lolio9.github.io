@@ -59,15 +59,25 @@
           >Nettside Eksperten <strong>Jonli</strong></a
         >
 
-        <!-- Hamburgermeny-knapp -->
-        <button class="hamburger" aria-label="Meny" aria-expanded="false">
+        <!-- Vanlig navigasjon (kun for desktop) -->
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="tjenester.html">Tjenester</a></li>
+            <li><a href="om-meg.html">Om meg</a></li>
+            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <!-- Hamburgermeny (kun for mobil) -->
+        <button class="hamburger" aria-label="Meny">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
           </span>
         </button>
 
-        <!-- Navigasjonsmeny -->
-        <nav class="navbar">
+        <!-- Mobilmeny (kun for mobil) -->
+        <nav class="mobile-nav">
           <ul class="nav-links">
             <li><a href="index.html">Hjem</a></li>
             <li><a href="tjenester.html">Tjenester</a></li>
@@ -262,5 +272,32 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const mobileNav = document.querySelector(".mobile-nav");
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
+        document.body.appendChild(overlay);
+
+        // Toggle mobilmeny
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          mobileNav.classList.toggle("active");
+          overlay.classList.toggle("active");
+          document.body.style.overflow = mobileNav.classList.contains("active")
+            ? "hidden"
+            : "";
+        });
+
+        // Lukk meny ved klikk på overlay
+        overlay.addEventListener("click", function () {
+          hamburger.classList.remove("active");
+          mobileNav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+    </script>
   </body>
 </html>
