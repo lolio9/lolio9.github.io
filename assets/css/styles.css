@@ -933,48 +933,56 @@ button:disabled {
 
 /* Mobilvisning */
 @media (max-width: 768px) {
+  /* Hamburgermeny - kun synlig på mobil */
   .hamburger {
-    display: block;
+    display: none;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
   }
 
-  .navbar {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background: white;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
-    z-index: 999;
-    padding-top: 80px;
+  /* Mobilvisning */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      z-index: 999;
+      padding-top: 80px;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .nav-links li {
+      margin: 15px 0;
+    }
   }
 
-  .nav-links {
-    flex-direction: column;
-    padding: 20px;
-  }
+  /* Desktopvisning */
+  @media (min-width: 769px) {
+    .navbar {
+      display: block !important; /* Tvinger fram visning på desktop */
+    }
 
-  .nav-links li {
-    margin: 15px 0;
-  }
-
-  /* Når menyen er åpen */
-  .navbar.active {
-    right: 0;
-  }
-
-  .hamburger.active .hamburger-inner {
-    background-color: transparent;
-  }
-
-  .hamburger.active .hamburger-inner::before {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active .hamburger-inner::after {
-    transform: translateY(-8px) rotate(-45deg);
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   /* Overlay når menyen er åpen */
@@ -995,4 +1003,42 @@ button:disabled {
     opacity: 1;
     visibility: visible;
   }
+}
+
+/* Overlay for mobilmeny */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hamburgermeny animasjon */
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  transition: all 0.3s;
+}
+
+.hamburger.active .hamburger-inner {
+  transform: rotate(45deg);
+}
+
+.hamburger.active .hamburger-inner::before {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-inner::after {
+  transform: rotate(-90deg) translateX(8px);
 }
