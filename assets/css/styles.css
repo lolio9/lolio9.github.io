@@ -1032,50 +1032,58 @@ button:disabled {
 
 .desktop-nav .nav-links {
   display: flex;
-  gap: 2rem;
   list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.desktop-nav .nav-links li {
   margin: 0;
-  padding: 0;
+}
+
+.desktop-nav .nav-cta {
+  background: var(--secondary);
+  color: white !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
 }
 
 /* Mobil-navigasjon */
 .mobile-nav {
   display: none;
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 300px;
-  height: 100vh;
-  background: white;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  z-index: 999;
-  padding-top: 80px;
 }
 
-.mobile-nav .nav-links {
-  flex-direction: column;
-  padding: 20px;
-}
-
-/* Responsive regler */
+/* Mobilvisning */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding-top: 80px;
   }
 
   .mobile-nav.active {
     right: 0;
     display: block;
   }
-}
 
-.mobile-nav .nav-links {
-  flex-direction: column;
-  padding: 20px;
-}
+  .mobile-nav .nav-links {
+    flex-direction: column;
+    padding: 20px;
+  }
 
-.mobile-nav .nav-links li {
-  margin: 15px 0;
+  .mobile-nav .nav-links li {
+    margin: 15px 0;
+  }
 }
