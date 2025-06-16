@@ -24,26 +24,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
-  <!-- JavaScript for hamburgermeny -->
-  <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-    document.body.appendChild(overlay);
-
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navLinks.classList.toggle("active");
-      overlay.classList.toggle("active");
-    });
-
-    overlay.addEventListener("click", () => {
-      hamburger.classList.remove("active");
-      navLinks.classList.remove("active");
-      overlay.classList.remove("active");
-    });
-  </script>
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
@@ -54,7 +34,8 @@
           >
 
           <!-- Kun én navigasjonsliste -->
-          <ul class="nav-links">
+          <ul class="nav-links" id="navLinks">
+            <button class="close-menu" id="closeMenu">×</button>
             <li><a href="index.html">Hjem</a></li>
             <li><a href="tjenester.html">Tjenester</a></li>
             <li><a href="om-meg.html">Om meg</a></li>
@@ -62,7 +43,7 @@
           </ul>
 
           <!-- Hamburgermeny for mobil -->
-          <button class="hamburger">
+          <button class="hamburger" id="hamburger">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
@@ -259,6 +240,29 @@
             submitBtn.disabled = false;
           }
         });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        const closeMenu = document.getElementById("closeMenu");
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
+        document.body.appendChild(overlay);
+
+        function toggleMenu() {
+          hamburger.classList.toggle("active");
+          navLinks.classList.toggle("active");
+          overlay.classList.toggle("active");
+          document.body.style.overflow = navLinks.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        hamburger.addEventListener("click", toggleMenu);
+        closeMenu.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", toggleMenu);
+      });
     </script>
   </body>
 </html>
