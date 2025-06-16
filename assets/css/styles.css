@@ -1048,51 +1048,69 @@ button:disabled {
   display: block;
 }
 
+.desktop-nav .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.desktop-nav .nav-links li {
+  margin: 0;
+}
+
+.desktop-nav .nav-cta {
+  background: var(--secondary);
+  color: white !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
 /* Mobil-navigasjon */
 .mobile-nav {
   display: none;
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 300px;
-  height: 100vh;
-  background: white;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  z-index: 999;
-  padding-top: 80px;
 }
 
 /* Hamburgermeny */
 .hamburger {
   display: none;
-  padding: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
 }
 
 /* Mobilvisning */
 @media (max-width: 768px) {
   .desktop-nav {
-    display: none !important;
+    display: none;
   }
 
   .hamburger {
     display: block;
   }
 
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding-top: 80px;
+  }
+
   .mobile-nav.active {
     right: 0;
     display: block;
   }
-}
 
-/* Desktop-visning */
-@media (min-width: 769px) {
-  .mobile-nav {
-    display: none !important;
+  .mobile-nav .nav-links {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .mobile-nav .nav-links li {
+    margin: 15px 0;
   }
 }
