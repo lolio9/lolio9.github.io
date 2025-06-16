@@ -12,20 +12,28 @@
   --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Base styles for mobile */
-body {
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
-  color: var(--text);
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Base styles for mobile */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: 95%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 /* Tablet (768px and up) */
