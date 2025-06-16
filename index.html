@@ -24,117 +24,67 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
+  <!-- JavaScript for hamburgermeny -->
   <script>
-    // Velg elementer
     const hamburger = document.querySelector(".hamburger");
-    const navbar = document.querySelector(".navbar");
+    const navLinks = document.querySelector(".nav-links");
     const overlay = document.createElement("div");
     overlay.className = "overlay";
     document.body.appendChild(overlay);
 
-    // Klikk-event for hamburgermeny
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
-      navbar.classList.toggle("active");
+      navLinks.classList.toggle("active");
       overlay.classList.toggle("active");
-      document.body.style.overflow = navbar.classList.contains("active")
-        ? "hidden"
-        : "";
-      hamburger.setAttribute(
-        "aria-expanded",
-        navbar.classList.contains("active")
-      );
     });
 
-    // Lukk meny ved klikk på overlay
     overlay.addEventListener("click", () => {
       hamburger.classList.remove("active");
-      navbar.classList.remove("active");
+      navLinks.classList.remove("active");
       overlay.classList.remove("active");
-      document.body.style.overflow = "";
-      hamburger.setAttribute("aria-expanded", "false");
     });
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const hamburger = document.querySelector(".hamburger");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.createElement("div");
-      overlay.className = "overlay";
-      document.body.appendChild(overlay);
 
-      // Toggle meny
-      hamburger.addEventListener("click", function () {
-        hamburger.classList.toggle("active");
-        navbar.classList.toggle("active");
-        overlay.classList.toggle("active");
-        document.body.style.overflow = navbar.classList.contains("active")
-          ? "hidden"
-          : "";
-      });
-
-      // Lukk meny ved klikk på overlay
-      overlay.addEventListener("click", function () {
-        hamburger.classList.remove("active");
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-      });
-    });
-  </script>
   <body>
+    <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="container">
-        <a href="index.html" class="logo"
-          >Nettside Eksperten <strong>Jonli</strong></a
-        >
+        <nav class="navbar">
+          <a href="index.html" class="logo">Nettside Eksperten Jönli</a>
 
-        <!-- Vanlig navigasjon (kun for desktop) -->
-        <nav class="desktop-nav">
+          <!-- Kun én navigasjonsliste -->
           <ul class="nav-links">
             <li><a href="index.html">Hjem</a></li>
             <li><a href="tjenester.html">Tjenester</a></li>
             <li><a href="om-meg.html">Om meg</a></li>
             <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
           </ul>
+
+          <!-- Hamburgermeny for mobil -->
+          <button class="hamburger">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
         </nav>
-
-        <!-- Hamburgermeny (kun for mobil) -->
-        <button class="hamburger" aria-label="Meny">
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
       </div>
-
-      <!-- Mobilmeny (kun for mobil) -->
-      <nav class="mobile-nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Hjem</a></li>
-          <li><a href="tjenester.html">Tjenester</a></li>
-          <li><a href="om-meg.html">Om meg</a></li>
-          <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
-        </ul>
-      </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content text-center">
+    <main>
+      <section class="hero">
+        <div class="container">
           <h1>Profesjonelle nettsideløsninger</h1>
           <p class="lead">
             Skreddersydde nettsider som forbedrer din digitale tilstedeværelse
           </p>
-          <div class="cta-buttons">
-            <a href="kontakt.html" class="btn btn-primary">Få gratis tilbud</a>
-            <a href="tjenester.html" class="btn btn-secondary"
-              >Mine tjenester</a
-            >
+          <div class="btn-group">
+            <a href="#tjenester" class="btn btn-primary">Få gratis tilbud</a>
+            <a href="#tjenester" class="btn btn-secondary">Mine tjenester</a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Services Section -->
     <section class="services">
@@ -219,24 +169,5 @@
         </div>
       </div>
     </footer>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const hamburger = document.querySelector(".hamburger");
-        const mobileNav = document.querySelector(".mobile-nav");
-
-        hamburger.addEventListener("click", function () {
-          hamburger.classList.toggle("active");
-          mobileNav.classList.toggle("active");
-        });
-
-        // Lukk meny ved klikk på overlay
-        overlay.addEventListener("click", function () {
-          hamburger.classList.remove("active");
-          mobileNav.classList.remove("active");
-          overlay.classList.remove("active");
-          document.body.style.overflow = "";
-        });
-      });
-    </script>
   </body>
 </html>
