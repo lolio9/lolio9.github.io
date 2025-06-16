@@ -299,12 +299,12 @@ body {
   /* .btn-primary {
     background-color: var(--secondary);
     color: var(--white);
-  } */
+  }
 
   .btn-primary:hover {
     background-color: var(--primary-light);
     transform: translateY(-2px);
-  }
+  } */
 
   .btn-secondary {
     border: 2px solid var(--secondary);
