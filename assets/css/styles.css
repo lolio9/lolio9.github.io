@@ -981,3 +981,52 @@ button:disabled {
     align-items: center;
   }
 }
+
+/* Mobilmeny forbedringer */
+.nav-links {
+  background-color: var(--primary-light);
+  padding: 2rem 1rem;
+}
+
+.nav-links li {
+  margin: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.nav-links a {
+  color: var(--white) !important;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+.nav-links .nav-cta {
+  background-color: var(--secondary);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Lukkeknapp for meny */
+.close-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--white);
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Header justering for mobil */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.5rem 0;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
