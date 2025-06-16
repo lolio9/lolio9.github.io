@@ -140,17 +140,34 @@ body {
     width: 80%;
     max-width: 300px;
     height: 100vh;
-    background: white;
+    background: var(--primary-light);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
     z-index: 999;
-    padding-top: 80px;
+    padding: 6rem 2rem 2rem;
     margin: 0;
   }
 
   .nav-links.active {
     right: 0;
     display: flex;
+  }
+  .nav-links li {
+    margin: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+  }
+
+  .nav-links a {
+    color: var(--white) !important;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    display: block;
+  }
+
+  .nav-cta {
+    margin-top: 1rem;
+    text-align: center;
   }
 }
 
