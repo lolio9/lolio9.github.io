@@ -296,10 +296,10 @@ body {
     min-width: 120px;
   }
 
-  .btn-primary {
+  /* .btn-primary {
     background-color: var(--secondary);
     color: var(--white);
-  }
+  } */
 
   .btn-primary:hover {
     background-color: var(--primary-light);
