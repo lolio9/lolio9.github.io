@@ -256,24 +256,5 @@
           }
         });
     </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const hamburger = document.querySelector(".hamburger");
-        const mobileNav = document.querySelector(".mobile-nav");
-
-        hamburger.addEventListener("click", function () {
-          hamburger.classList.toggle("active");
-          mobileNav.classList.toggle("active");
-        });
-
-        // Lukk meny ved klikk på overlay
-        overlay.addEventListener("click", function () {
-          hamburger.classList.remove("active");
-          mobileNav.classList.remove("active");
-          overlay.classList.remove("active");
-          document.body.style.overflow = "";
-        });
-      });
-    </script>
   </body>
 </html>
