@@ -55,6 +55,33 @@
       hamburger.setAttribute("aria-expanded", "false");
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.createElement("div");
+      overlay.className = "overlay";
+      document.body.appendChild(overlay);
+
+      // Toggle meny
+      hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        navbar.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = navbar.classList.contains("active")
+          ? "hidden"
+          : "";
+      });
+
+      // Lukk meny ved klikk på overlay
+      overlay.addEventListener("click", function () {
+        hamburger.classList.remove("active");
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+  </script>
   <body>
     <header class="header">
       <div class="container">
