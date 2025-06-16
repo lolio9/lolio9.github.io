@@ -70,116 +70,118 @@
     </header>
 
     <!-- Kontakt Seksjon -->
-    <section class="contact">
-      <div class="container">
-        <div class="section-header text-center">
-          <h1>Kontakt meg</h1>
-          <p class="section-description">
-            Fyll ut skjemaet under, så tar jeg kontakt så raskt som mulig
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-form">
-            <form
-              id="contactForm"
-              action="https://formspree.io/f/xkgbbqna"
-              method="POST"
-            >
-              <input type="hidden" name="_language" value="no" />
-              <input
-                type="hidden"
-                name="_subject"
-                value="Ny henvendelse fra nettsiden"
-              />
-
-              <div class="form-group">
-                <label for="name">Fullt navn*</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  minlength="2"
-                  placeholder="Ditt fulle navn"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="email">E-post*</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="din@epost.no"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Telefon (valgfri)</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="+47 123 45 678"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Melding*</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  minlength="10"
-                  placeholder="Hva kan jeg hjelpe deg med?"
-                ></textarea>
-              </div>
-
-              <!-- Honey pot for spam -->
-              <input type="text" name="_gotcha" style="display: none" />
-
-              <button type="submit" class="btn btn-primary" id="submitBtn">
-                <span id="submitText">Send melding</span>
-                <span id="loadingSpinner" style="display: none"
-                  ><i class="fas fa-spinner fa-spin"></i> Sender...</span
-                >
-              </button>
-
-              <p class="form-note">Felt merket med * er obligatoriske</p>
-            </form>
+    <main>
+      <section class="contact">
+        <div class="container">
+          <div class="section-header text-center">
+            <h1>Kontakt meg</h1>
+            <p class="section-description">
+              Fyll ut skjemaet under, så tar jeg kontakt så raskt som mulig
+            </p>
           </div>
 
-          <div class="contact-info">
-            <h3>Kontaktinformasjon</h3>
-            <ul class="info-list">
-              <li>
-                <strong>E-post:</strong>
-                <a href="mailto:nettsideekspertenjonli@gmail.com"
-                  >nettsideekspertenjonli@gmail.com</a
-                >
-              </li>
-              <li>
-                <strong>Telefon:</strong>
-                <a href="tel:+4745832647">+47 458 32 647</a>
-              </li>
-              <li>
-                <strong>Adresse:</strong>
-                <span>Trondheim, Norge</span>
-              </li>
-            </ul>
+          <div class="contact-grid">
+            <div class="contact-form">
+              <form
+                id="contactForm"
+                action="https://formspree.io/f/xkgbbqna"
+                method="POST"
+              >
+                <input type="hidden" name="_language" value="no" />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Ny henvendelse fra nettsiden"
+                />
 
-            <h3>Åpningstider</h3>
-            <ul class="hours-list">
-              <li><span>Mandag - Fredag:</span> 09:00 - 16:00</li>
-              <li><span>Lørdag - Søndag:</span> Stengt</li>
-            </ul>
+                <div class="form-group">
+                  <label for="name">Fullt navn*</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    minlength="2"
+                    placeholder="Ditt fulle navn"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">E-post*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="din@epost.no"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Telefon (valgfri)</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+47 123 45 678"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Melding*</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    minlength="10"
+                    placeholder="Hva kan jeg hjelpe deg med?"
+                  ></textarea>
+                </div>
+
+                <!-- Honey pot for spam -->
+                <input type="text" name="_gotcha" style="display: none" />
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <span id="submitText">Send melding</span>
+                  <span id="loadingSpinner" style="display: none"
+                    ><i class="fas fa-spinner fa-spin"></i> Sender...</span
+                  >
+                </button>
+
+                <p class="form-note">Felt merket med * er obligatoriske</p>
+              </form>
+            </div>
+
+            <div class="contact-info">
+              <h3>Kontaktinformasjon</h3>
+              <ul class="info-list">
+                <li>
+                  <strong>E-post:</strong>
+                  <a href="mailto:nettsideekspertenjonli@gmail.com"
+                    >nettsideekspertenjonli@gmail.com</a
+                  >
+                </li>
+                <li>
+                  <strong>Telefon:</strong>
+                  <a href="tel:+4745832647">+47 458 32 647</a>
+                </li>
+                <li>
+                  <strong>Adresse:</strong>
+                  <span>Trondheim, Norge</span>
+                </li>
+              </ul>
+
+              <h3>Åpningstider</h3>
+              <ul class="hours-list">
+                <li><span>Mandag - Fredag:</span> 09:00 - 16:00</li>
+                <li><span>Lørdag - Søndag:</span> Stengt</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
