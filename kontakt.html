@@ -45,40 +45,28 @@
     });
   </script>
   <body>
-    <!-- Header -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="container">
-        <a href="index.html" class="logo"
-          >Nettside Eksperten <strong>Jonli</strong></a
-        >
+        <nav class="navbar">
+          <a href="index.html" class="logo">Nettside Eksperten Jönli</a>
 
-        <!-- Vanlig navigasjon (kun for desktop) -->
-        <nav class="desktop-nav">
+          <!-- Kun én navigasjonsliste -->
           <ul class="nav-links">
             <li><a href="index.html">Hjem</a></li>
             <li><a href="tjenester.html">Tjenester</a></li>
             <li><a href="om-meg.html">Om meg</a></li>
             <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
           </ul>
+
+          <!-- Hamburgermeny for mobil -->
+          <button class="hamburger">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
         </nav>
-
-        <!-- Hamburgermeny (kun for mobil) -->
-        <button class="hamburger" aria-label="Meny">
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
       </div>
-
-      <!-- Mobilmeny (kun for mobil) -->
-      <nav class="mobile-nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Hjem</a></li>
-          <li><a href="tjenester.html">Tjenester</a></li>
-          <li><a href="om-meg.html">Om meg</a></li>
-          <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
-        </ul>
-      </nav>
     </header>
 
     <!-- Kontakt Seksjon -->
