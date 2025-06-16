@@ -1042,3 +1042,57 @@ button:disabled {
 .hamburger.active .hamburger-inner::after {
   transform: rotate(-90deg) translateX(8px);
 }
+
+/* Desktop-navigasjon */
+.desktop-nav {
+  display: block;
+}
+
+/* Mobil-navigasjon */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 999;
+  padding-top: 80px;
+}
+
+/* Hamburgermeny */
+.hamburger {
+  display: none;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Mobilvisning */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobile-nav.active {
+    right: 0;
+    display: block;
+  }
+}
+
+/* Desktop-visning */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
