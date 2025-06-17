@@ -1030,3 +1030,53 @@ button:disabled {
   font-size: 0.8rem;
   margin-left: 8px;
 }
+
+/* Container */
+.tjenester-section {
+  padding: 2rem 0;
+  background: #f9fafb;
+}
+
+/* Service Card */
+.tjeneste-kort {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.tjeneste-ikon {
+  font-size: 1.5rem;
+  color: #2563eb;
+  margin-right: 1rem;
+}
+
+/* Discount Box */
+.rabatt-boks {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.rabatt-merke {
+  background: white;
+  color: #2563eb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Button */
+.knapp-hoved {
+  background: white;
+  color: #2563eb;
+  margin-top: 1rem;
+}
