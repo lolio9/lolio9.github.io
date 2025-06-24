@@ -7,7 +7,9 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kontakt | Nettside Eksperten Jonli</title>
+    <title data-translate="contact_title">
+      Kontakt | Nettside Eksperten Jonli
+    </title>
     <meta
       name="description"
       content="Kontakt meg for en uforpliktende samtale om ditt nettsideprosjekt"
@@ -34,26 +36,78 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "AW-17219060462");
     </script>
+    <style>
+      .language-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .language-switcher img {
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        object-fit: cover;
+        transition: transform 0.2s;
+      }
+      .language-switcher img:hover {
+        transform: scale(1.1);
+      }
+      .logo strong {
+        color: #0066cc; /* Blå farge for Jonli */
+      }
+      .form-success {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .form-success i {
+        color: #28a745;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
+      <!-- Mine flaggknapper -->
+      <div class="language-switcher">
+        <a href="#" class="language-option" data-lang="no">
+          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+        </a>
+        <a href="#" class="language-option" data-lang="en">
+          <img src="usa-flag.jpg" alt="English" title="English" />
+        </a>
+      </div>
+
       <div class="container">
         <nav class="navbar">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
+          <a href="index.html" class="logo">
+            <span data-translate="logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
 
-          <!-- Kun én navigasjonsliste -->
+          <!-- Navigasjonsliste -->
           <ul class="nav-links" id="navLinks">
-            <!-- <button class="close-menu" id="closeMenu">×</button> -->
-            <li><a href="index.html">Hjem</a></li>
-            <li><a href="tjenester.html">Tjenester</a></li>
-            <li><a href="om-meg.html">Om meg</a></li>
-            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+            <li><a href="index.html" data-translate="home">Hjem</a></li>
+            <li>
+              <a href="tjenester.html" data-translate="services">Tjenester</a>
+            </li>
+            <li><a href="om-meg.html" data-translate="about">Om meg</a></li>
+            <li>
+              <a href="kontakt.html" class="nav-cta" data-translate="contact"
+                >Kontakt</a
+              >
+            </li>
           </ul>
 
           <!-- Hamburgermeny for mobil -->
@@ -71,8 +125,8 @@
       <section class="contact">
         <div class="container">
           <div class="section-header text-center">
-            <h1>Kontakt meg</h1>
-            <p class="section-description">
+            <h1 data-translate="contact_heading">Kontakt meg</h1>
+            <p class="section-description" data-translate="contact_subheading">
               Fyll ut skjemaet under, så tar jeg kontakt så raskt som mulig
             </p>
           </div>
@@ -92,46 +146,56 @@
                 />
 
                 <div class="form-group">
-                  <label for="name">Fullt navn*</label>
+                  <label for="name" data-translate="form_name"
+                    >Fullt navn*</label
+                  >
                   <input
                     type="text"
                     id="name"
                     name="name"
                     required
                     minlength="2"
+                    data-translate-placeholder="form_name_placeholder"
                     placeholder="Ditt fulle navn"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="email">E-post*</label>
+                  <label for="email" data-translate="form_email">E-post*</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     required
+                    data-translate-placeholder="form_email_placeholder"
                     placeholder="din@epost.no"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">Telefon (valgfri)</label>
+                  <label for="phone" data-translate="form_phone"
+                    >Telefon (valgfri)</label
+                  >
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
+                    data-translate-placeholder="form_phone_placeholder"
                     placeholder="+47 123 45 678"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="message">Melding*</label>
+                  <label for="message" data-translate="form_message"
+                    >Melding*</label
+                  >
                   <textarea
                     id="message"
                     name="message"
                     rows="5"
                     required
                     minlength="10"
+                    data-translate-placeholder="form_message_placeholder"
                     placeholder="Hva kan jeg hjelpe deg med?"
                   ></textarea>
                 </div>
@@ -140,32 +204,37 @@
                 <input type="text" name="_gotcha" style="display: none" />
 
                 <button type="submit" class="btn btn-primary" id="submitBtn">
-                  <span id="submitText">Send melding</span>
-                  <span id="loadingSpinner" style="display: none"
-                    ><i class="fas fa-spinner fa-spin"></i> Sender...</span
+                  <span id="submitText" data-translate="form_submit"
+                    >Send melding</span
                   >
+                  <span id="loadingSpinner" style="display: none">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span data-translate="form_sending">Sender...</span>
+                  </span>
                 </button>
 
-                <p class="form-note">Felt merket med * er obligatoriske</p>
+                <p class="form-note" data-translate="form_required">
+                  Felt merket med * er obligatoriske
+                </p>
               </form>
             </div>
 
             <div class="contact-info">
-              <h3>Kontaktinformasjon</h3>
+              <h3 data-translate="contact_info">Kontaktinformasjon</h3>
               <ul class="info-list">
                 <li>
-                  <strong>E-post:</strong>
+                  <strong data-translate="contact_email">E-post:</strong>
                   <a href="mailto:nettsideekspertenjonli@gmail.com"
                     >nettsideekspertenjonli@gmail.com</a
                   >
                 </li>
                 <li>
-                  <strong>Telefon:</strong>
+                  <strong data-translate="contact_phone">Telefon:</strong>
                   <a href="tel:+4745832647">+47 458 32 647</a>
                 </li>
                 <li>
-                  <strong>Adresse:</strong>
-                  <span>Trondheim, Norge</span>
+                  <strong data-translate="contact_address">Adresse:</strong>
+                  <span data-translate="contact_city">Trondheim, Norge</span>
                 </li>
               </ul>
             </div>
@@ -178,82 +247,194 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content text-center">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
-          <p>Profesjonelle nettsideløsninger siden 2024</p>
+          <a href="index.html" class="logo">
+            <span data-translate="footer_logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
+          <p data-translate="footer_text">
+            Profesjonelle nettsideløsninger siden 2024
+          </p>
 
           <div class="footer-links">
-            <a href="tjenester.html">Tjenester</a>
-            <a href="om-meg.html">Om meg</a>
-            <a href="kontakt.html">Kontakt</a>
+            <a href="tjenester.html" data-translate="footer_services"
+              >Tjenester</a
+            >
+            <a href="om-meg.html" data-translate="footer_about">Om meg</a>
+            <a href="kontakt.html" data-translate="footer_contact">Kontakt</a>
           </div>
 
-          <p class="copyright">
+          <p class="copyright" data-translate="copyright">
             &copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.
           </p>
         </div>
       </div>
     </footer>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <!-- Legg denne koden i bunnen av body, rett før </body> -->
+    <!-- JavaScript for språkbytte og skjema -->
     <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
+      // Oversettelsesdata
+      const translations = {
+        no: {
+          contact_title: "Kontakt | Nettside Eksperten Jonli",
+          logo: "Nettside Eksperten",
+          home: "Hjem",
+          services: "Tjenester",
+          about: "Om meg",
+          contact: "Kontakt",
+          contact_heading: "Kontakt meg",
+          contact_subheading:
+            "Fyll ut skjemaet under, så tar jeg kontakt så raskt som mulig",
+          form_name: "Fullt navn*",
+          form_name_placeholder: "Ditt fulle navn",
+          form_email: "E-post*",
+          form_email_placeholder: "din@epost.no",
+          form_phone: "Telefon (valgfri)",
+          form_phone_placeholder: "+47 123 45 678",
+          form_message: "Melding*",
+          form_message_placeholder: "Hva kan jeg hjelpe deg med?",
+          form_submit: "Send melding",
+          form_sending: "Sender...",
+          form_required: "Felt merket med * er obligatoriske",
+          contact_info: "Kontaktinformasjon",
+          contact_email: "E-post:",
+          contact_phone: "Telefon:",
+          contact_address: "Adresse:",
+          contact_city: "Trondheim, Norge",
+          footer_logo: "Nettside Eksperten",
+          footer_text: "Profesjonelle nettsideløsninger siden 2024",
+          footer_services: "Tjenester",
+          footer_about: "Om meg",
+          footer_contact: "Kontakt",
+          copyright:
+            "&copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.",
+        },
+        en: {
+          contact_title: "Contact | Website Expert Jonli",
+          logo: "Website Expert",
+          home: "Home",
+          services: "Services",
+          about: "About me",
+          contact: "Contact",
+          contact_heading: "Contact me",
+          contact_subheading:
+            "Fill out the form below and I'll get back to you as soon as possible",
+          form_name: "Full name*",
+          form_name_placeholder: "Your full name",
+          form_email: "Email*",
+          form_email_placeholder: "your@email.com",
+          form_phone: "Phone (optional)",
+          form_phone_placeholder: "+47 123 45 678",
+          form_message: "Message*",
+          form_message_placeholder: "How can I help you?",
+          form_submit: "Send message",
+          form_sending: "Sending...",
+          form_required: "Fields marked with * are required",
+          contact_info: "Contact information",
+          contact_email: "Email:",
+          contact_phone: "Phone:",
+          contact_address: "Address:",
+          contact_city: "Trondheim, Norway",
+          footer_logo: "Website Expert",
+          footer_text: "Professional website solutions since 2024",
+          footer_services: "Services",
+          footer_about: "About me",
+          footer_contact: "Contact",
+          copyright: "&copy; 2025 Website Expert Jonli. All rights reserved.",
+        },
+      };
 
-          const submitBtn = document.getElementById("submitBtn");
-          const submitText = document.getElementById("submitText");
-          const loadingSpinner = document.getElementById("loadingSpinner");
+      // Bytt språk
+      function changeLanguage(lang) {
+        // Oppdater skjemaets språk
+        document.querySelector('input[name="_language"]').value = lang;
 
-          // Vis laster-indikator
-          submitText.style.display = "none";
-          loadingSpinner.style.display = "inline-block";
-          submitBtn.disabled = true;
-
-          try {
-            console.log("Sender skjema..."); // Debug log
-
-            const response = await fetch(e.target.action, {
-              method: "POST",
-              body: new FormData(e.target),
-              headers: {
-                Accept: "application/json",
-              },
-            });
-
-            console.log("Status:", response.status); // Debug log
-
-            if (response.ok) {
-              // Vis suksessmelding i stedet for alert
-              const successDiv = document.createElement("div");
-              successDiv.className = "form-success";
-              successDiv.innerHTML = `
-        <i class="fas fa-check-circle"></i>
-        <h3>Takk for meldingen!</h3>
-        <p>Jeg svarer innen 24 timer.</p>
-    `;
-              document.getElementById("contactForm").replaceWith(successDiv);
-            }
-          } finally {
-            // Tilbakestill knapp
-            submitText.style.display = "inline-block";
-            loadingSpinner.style.display = "none";
-            submitBtn.disabled = false;
+        // Oppdater alle oversettbare elementer
+        document.querySelectorAll("[data-translate]").forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
           }
         });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
+
+        // Oppdater placeholder-tekster
+        document
+          .querySelectorAll("[data-translate-placeholder]")
+          .forEach((element) => {
+            const key = element.getAttribute("data-translate-placeholder");
+            if (translations[lang] && translations[lang][key]) {
+              element.setAttribute("placeholder", translations[lang][key]);
+            }
+          });
+
+        // Oppdater tittel
+        document.title = translations[lang].contact_title;
+
+        localStorage.setItem("language", lang);
+      }
+
+      // Last inn språk ved oppstart
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("language") || "no";
+        changeLanguage(savedLang);
+
+        // Klikk-event for språkknapper
+        document.querySelectorAll(".language-option").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            changeLanguage(button.getAttribute("data-lang"));
+          });
+        });
+
+        // Skjema-håndtering
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submitBtn");
+            const submitText = document.getElementById("submitText");
+            const loadingSpinner = document.getElementById("loadingSpinner");
+
+            // Vis laster-indikator
+            submitText.style.display = "none";
+            loadingSpinner.style.display = "inline-block";
+            submitBtn.disabled = true;
+
+            try {
+              const response = await fetch(e.target.action, {
+                method: "POST",
+                body: new FormData(e.target),
+                headers: { Accept: "application/json" },
+              });
+
+              if (response.ok) {
+                const currentLang = localStorage.getItem("language") || "no";
+                const successMessage =
+                  currentLang === "no"
+                    ? "Takk for meldingen! Jeg svarer innen 24 timer."
+                    : "Thank you for your message! I'll respond within 24 hours.";
+
+                const successDiv = document.createElement("div");
+                successDiv.className = "form-success";
+                successDiv.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <h3>${
+                  currentLang === "no" ? "Melding sendt!" : "Message sent!"
+                }</h3>
+                <p>${successMessage}</p>
+              `;
+                document.getElementById("contactForm").replaceWith(successDiv);
+              }
+            } finally {
+              submitText.style.display = "inline-block";
+              loadingSpinner.style.display = "none";
+              submitBtn.disabled = false;
+            }
+          });
+
+        // Hamburgermeny funksjonalitet
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
-        const closeMenu = document.getElementById("closeMenu");
         const overlay = document.createElement("div");
         overlay.className = "overlay";
         document.body.appendChild(overlay);
@@ -268,7 +449,6 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
-        closeMenu.addEventListener("click", toggleMenu);
         overlay.addEventListener("click", toggleMenu);
 
         navLinks.addEventListener("click", function (e) {
