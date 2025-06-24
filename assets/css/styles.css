@@ -1030,17 +1030,3 @@ button:disabled {
   font-size: 0.8rem;
   margin-left: 8px;
 }
-
-.language-switcher {
-  position: fixed;
-  top: 20px;
-  right: 100px; /* Flytt litt til venstre for Google-widgeten */
-  z-index: 1000;
-}
-
-#google_translate_element {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
-}
