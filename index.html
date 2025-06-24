@@ -41,15 +41,40 @@
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
+      <!-- Behold flaggknappene (uten JavaScript for manuell oversettelse) -->
       <div class="language-switcher">
         <a href="#" class="language-option" data-lang="no">
-          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+          <img src="norsk-flagg.png" alt="Norsk" />
         </a>
         <a href="#" class="language-option" data-lang="en">
-          <img src="usa-flag.jpg" alt="English" title="English" />
+          <img src="usa-flagg.png" alt="English" />
         </a>
       </div>
+
+      <!-- Legg til Google Translate-widgeten -->
       <div id="google_translate_element"></div>
+
+      <script>
+        function loadGoogleTranslate() {
+          var script = document.createElement("script");
+          script.src =
+            "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+          document.head.appendChild(script);
+        }
+
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: "no",
+              includedLanguages: "no,en",
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            },
+            "google_translate_element"
+          );
+        }
+
+        window.onload = loadGoogleTranslate;
+      </script>
       <div class="container">
         <nav class="navbar">
           <a href="index.html" class="logo"

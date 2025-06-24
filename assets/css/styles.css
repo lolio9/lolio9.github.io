@@ -1032,27 +1032,12 @@ button:disabled {
 }
 
 .language-switcher {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 10px;
+  right: 100px; /* Flytt litt til venstre for Google-widgeten */
+  z-index: 1000;
 }
 
-.language-switcher img {
-  width: 30px; /* Juster størrelsen etter behov */
-  height: auto;
-  cursor: pointer;
-  transition: opacity 0.3s;
-}
-
-.language-switcher img:hover {
-  opacity: 0.8;
-}
-
-.goog-te-banner-frame {
-  display: none !important;
-} /* Skjul Google-banner */
 #google_translate_element {
   position: fixed;
   top: 10px;

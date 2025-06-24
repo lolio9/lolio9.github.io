@@ -17,24 +17,3 @@ document.querySelectorAll(".language-option").forEach((button) => {
     }
   });
 });
-
-function loadGoogleTranslate() {
-  var newScript = document.createElement("script");
-  newScript.src =
-    "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-  document.head.appendChild(newScript);
-}
-
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    {
-      pageLanguage: "no", // Standard språk (norsk)
-      includedLanguages: "no,en", // Kun norsk og engelsk
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    },
-    "google_translate_element"
-  );
-}
-
-// Last inn widgeten når siden åpnes
-window.onload = loadGoogleTranslate;
