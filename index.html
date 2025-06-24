@@ -47,12 +47,18 @@
         z-index: 1000;
       }
 
-      .language-btn {
-        padding: 5px 10px;
+      .language-switcher img {
+        width: 30px;
+        height: 20px;
         cursor: pointer;
         border: 1px solid #ddd;
         border-radius: 4px;
-        background: white;
+        object-fit: cover;
+        transition: transform 0.2s;
+      }
+
+      .language-switcher img:hover {
+        transform: scale(1.1);
       }
     </style>
   </head>
@@ -61,67 +67,32 @@
     <header class="header">
       <!-- Mine flaggknapper -->
       <div class="language-switcher">
-        <button class="language-btn" data-lang="no">🇳🇴 Norsk</button>
-        <button class="language-btn" data-lang="en">🇬🇧 English</button>
+        <a href="#" class="language-option" data-lang="no">
+          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+        </a>
+        <a href="#" class="language-option" data-lang="en">
+          <img src="usa-flag.jpg" alt="English" title="English" />
+        </a>
       </div>
-
-      <h1 data-translate="welcome">Velkommen</h1>
-      <p data-translate="description">Dette er en nettside.</p>
-      <script>
-        // Oversettelsesdata
-        const translations = {
-          no: {
-            welcome: "Velkommen",
-            description: "Dette er en nettside.",
-          },
-          en: {
-            welcome: "Welcome",
-            description: "This is a website.",
-          },
-        };
-
-        // Bytt språk
-        function changeLanguage(lang) {
-          const elements = document.querySelectorAll("[data-translate]");
-          elements.forEach((element) => {
-            const key = element.getAttribute("data-translate");
-            if (translations[lang] && translations[lang][key]) {
-              element.textContent = translations[lang][key];
-            }
-          });
-
-          // Lagre valgt språk (valgfritt)
-          localStorage.setItem("language", lang);
-        }
-
-        // Last inn språk ved oppstart
-        document.addEventListener("DOMContentLoaded", () => {
-          const savedLang = localStorage.getItem("language") || "no";
-          changeLanguage(savedLang);
-
-          // Klikk-event for språkknapper
-          document.querySelectorAll(".language-btn").forEach((button) => {
-            button.addEventListener("click", () => {
-              const lang = button.getAttribute("data-lang");
-              changeLanguage(lang);
-            });
-          });
-        });
-      </script>
 
       <div class="container">
         <nav class="navbar">
-          <a href="index.html" class="logo"
+          <a href="index.html" class="logo" data-translate="logo"
             >Nettside Eksperten <strong>Jonli</strong></a
           >
 
           <!-- Kun én navigasjonsliste -->
           <ul class="nav-links" id="navLinks">
-            <!-- <button class="close-menu" id="closeMenu">×</button> -->
-            <li><a href="index.html">Hjem</a></li>
-            <li><a href="tjenester.html">Tjenester</a></li>
-            <li><a href="om-meg.html">Om meg</a></li>
-            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+            <li><a href="index.html" data-translate="home">Hjem</a></li>
+            <li>
+              <a href="tjenester.html" data-translate="services">Tjenester</a>
+            </li>
+            <li><a href="om-meg.html" data-translate="about">Om meg</a></li>
+            <li>
+              <a href="kontakt.html" class="nav-cta" data-translate="contact"
+                >Kontakt</a
+              >
+            </li>
           </ul>
 
           <!-- Hamburgermeny for mobil -->
@@ -138,11 +109,16 @@
     <main>
       <section class="hero">
         <div class="container">
-          <h1>Profesjonelle nettsideløsninger</h1>
-          <p class="lead">
+          <h1 data-translate="hero_title">Profesjonelle nettsideløsninger</h1>
+          <p class="lead" data-translate="hero_text">
             Skreddersydde nettsider som forbedrer din digitale tilstedeværelse
           </p>
-          <a href="tjenester.html" class="btn btn-secondary">Mine tjenester</a>
+          <a
+            href="tjenester.html"
+            class="btn btn-secondary"
+            data-translate="services_button"
+            >Mine tjenester</a
+          >
         </div>
       </section>
     </main>
@@ -151,28 +127,32 @@
     <section class="services">
       <div class="container">
         <div class="section-header text-center">
-          <h2>Mine tjenester</h2>
-          <p class="section-description">
+          <h2 data-translate="services_title">Mine tjenester</h2>
+          <p class="section-description" data-translate="services_subtitle">
             Tilpassede løsninger for din bedrift
           </p>
         </div>
 
         <div class="services-grid">
           <div class="service-card text-center">
-            <h3>Nettsidedesign</h3>
-            <p>
+            <h3 data-translate="service1_title">Nettsidedesign</h3>
+            <p data-translate="service1_text">
               Moderne og brukervennlige design som engasjerer dine besøkende
             </p>
           </div>
 
           <div class="service-card text-center">
-            <h3>Webutvikling</h3>
-            <p>Hurtige og sikre nettsider bygget med moderne teknologier</p>
+            <h3 data-translate="service2_title">Webutvikling</h3>
+            <p data-translate="service2_text">
+              Hurtige og sikre nettsider bygget med moderne teknologier
+            </p>
           </div>
 
           <div class="service-card text-center">
-            <h3>SEO Optimalisering</h3>
-            <p>Forbedret synlighet på søkemotorer for mer trafikk</p>
+            <h3 data-translate="service3_title">SEO Optimalisering</h3>
+            <p data-translate="service3_text">
+              Forbedret synlighet på søkemotorer for mer trafikk
+            </p>
           </div>
         </div>
       </div>
@@ -182,16 +162,16 @@
     <section class="testimonials">
       <div class="container">
         <div class="section-header text-center">
-          <h2>Hva kundene sier</h2>
+          <h2 data-translate="testimonials_title">Hva kundene sier</h2>
         </div>
 
         <div class="testimonial-card text-center">
-          <p>
+          <p data-translate="testimonial_text">
             "Marcus leverte en nettside som virkelig forbedret vår online
             tilstedeværelse. Profesjonell og effektiv!"
           </p>
           <div class="client-info">
-            <h4>Anonym</h4>
+            <h4 data-translate="testimonial_author">Anonym</h4>
             <p></p>
           </div>
         </div>
@@ -202,9 +182,16 @@
     <section class="cta">
       <div class="container">
         <div class="cta-content text-center">
-          <h2>Klar til å starte ditt prosjekt?</h2>
-          <p>Kontakt meg for en uforpliktende samtale om dine behov</p>
-          <a href="kontakt.html" class="btn btn-primary">Kontakt meg</a>
+          <h2 data-translate="cta_title">Klar til å starte ditt prosjekt?</h2>
+          <p data-translate="cta_text">
+            Kontakt meg for en uforpliktende samtale om dine behov
+          </p>
+          <a
+            href="kontakt.html"
+            class="btn btn-primary"
+            data-translate="contact_button"
+            >Kontakt meg</a
+          >
         </div>
       </div>
     </section>
@@ -213,29 +200,138 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content text-center">
-          <a href="index.html" class="logo"
+          <a href="index.html" class="logo" data-translate="footer_logo"
             >Nettside Eksperten <strong>Jonli</strong></a
           >
-          <p>Profesjonelle nettsideløsninger siden 2024</p>
+          <p data-translate="footer_text">
+            Profesjonelle nettsideløsninger siden 2024
+          </p>
 
           <div class="footer-links">
-            <a href="tjenester.html">Tjenester</a>
-            <a href="om-meg.html">Om meg</a>
-            <a href="kontakt.html">Kontakt</a>
+            <a href="tjenester.html" data-translate="footer_services"
+              >Tjenester</a
+            >
+            <a href="om-meg.html" data-translate="footer_about">Om meg</a>
+            <a href="kontakt.html" data-translate="footer_contact">Kontakt</a>
           </div>
 
-          <p class="copyright">
+          <p class="copyright" data-translate="copyright">
             &copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.
           </p>
         </div>
       </div>
     </footer>
-    <!-- JavaScript for hamburgermeny -->
+
+    <!-- JavaScript for oversettelse og hamburgermeny -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // Oversettelsesdata
+      const translations = {
+        no: {
+          logo: "Nettside Eksperten",
+          home: "Hjem",
+          services: "Tjenester",
+          about: "Om meg",
+          contact: "Kontakt",
+          hero_title: "Profesjonelle nettsideløsninger",
+          hero_text:
+            "Skreddersydde nettsider som forbedrer din digitale tilstedeværelse",
+          services_button: "Mine tjenester",
+          services_title: "Mine tjenester",
+          services_subtitle: "Tilpassede løsninger for din bedrift",
+          service1_title: "Nettsidedesign",
+          service1_text:
+            "Moderne og brukervennlige design som engasjerer dine besøkende",
+          service2_title: "Webutvikling",
+          service2_text:
+            "Hurtige og sikre nettsider bygget med moderne teknologier",
+          service3_title: "SEO Optimalisering",
+          service3_text: "Forbedret synlighet på søkemotorer for mer trafikk",
+          testimonials_title: "Hva kundene sier",
+          testimonial_text:
+            '"Marcus leverte en nettside som virkelig forbedret vår online tilstedeværelse. Profesjonell og effektiv!"',
+          testimonial_author: "Anonym",
+          cta_title: "Klar til å starte ditt prosjekt?",
+          cta_text: "Kontakt meg for en uforpliktende samtale om dine behov",
+          contact_button: "Kontakt meg",
+          footer_logo: "Nettside Eksperten",
+          footer_text: "Profesjonelle nettsideløsninger siden 2024",
+          footer_services: "Tjenester",
+          footer_about: "Om meg",
+          footer_contact: "Kontakt",
+          copyright:
+            "&copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.",
+        },
+        en: {
+          logo: "Website Expert",
+          home: "Home",
+          services: "Services",
+          about: "About me",
+          contact: "Contact",
+          hero_title: "Professional website solutions",
+          hero_text: "Custom websites that improve your digital presence",
+          services_button: "My services",
+          services_title: "My services",
+          services_subtitle: "Custom solutions for your business",
+          service1_title: "Web Design",
+          service1_text:
+            "Modern and user-friendly designs that engage your visitors",
+          service2_title: "Web Development",
+          service2_text:
+            "Fast and secure websites built with modern technologies",
+          service3_title: "SEO Optimization",
+          service3_text: "Improved search engine visibility for more traffic",
+          testimonials_title: "What clients say",
+          testimonial_text:
+            '"Marcus delivered a website that truly improved our online presence. Professional and efficient!"',
+          testimonial_author: "Anonymous",
+          cta_title: "Ready to start your project?",
+          cta_text:
+            "Contact me for a no-obligation consultation about your needs",
+          contact_button: "Contact me",
+          footer_logo: "Website Expert",
+          footer_text: "Professional website solutions since 2024",
+          footer_services: "Services",
+          footer_about: "About me",
+          footer_contact: "Contact",
+          copyright: "&copy; 2025 Website Expert Jonli. All rights reserved.",
+        },
+      };
+
+      // Bytt språk
+      function changeLanguage(lang) {
+        const elements = document.querySelectorAll("[data-translate]");
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          if (translations[lang] && translations[lang][key]) {
+            if (element.hasAttribute("placeholder")) {
+              element.setAttribute("placeholder", translations[lang][key]);
+            } else {
+              element.innerHTML = translations[lang][key];
+            }
+          }
+        });
+
+        // Lagre valgt språk
+        localStorage.setItem("language", lang);
+      }
+
+      // Last inn språk ved oppstart
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("language") || "no";
+        changeLanguage(savedLang);
+
+        // Klikk-event for språkknapper
+        document.querySelectorAll(".language-option").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const lang = button.getAttribute("data-lang");
+            changeLanguage(lang);
+          });
+        });
+
+        // Hamburgermeny funksjonalitet
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
-        // const closeMenu = document.getElementById("closeMenu");
         const overlay = document.createElement("div");
         overlay.className = "overlay";
         document.body.appendChild(overlay);
@@ -250,7 +346,6 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
-        // closeMenu.addEventListener("click", toggleMenu);
         overlay.addEventListener("click", toggleMenu);
 
         navLinks.addEventListener("click", function (e) {
