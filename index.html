@@ -61,6 +61,29 @@
       .logo strong {
         color: #0066cc; /* Blå farge for Jonli */
       }
+
+      .about-hero {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        padding: 4rem 0;
+        color: white;
+      }
+
+      /* Mobiltilpasning */
+      @media (max-width: 768px) {
+        .language-switcher {
+          top: 10px;
+          right: 10px;
+          gap: 10px;
+          padding: 6px;
+        }
+        .language-switcher img {
+          width: 32px;
+          height: 21px;
+        }
+        header {
+          padding-top: 50px; /* Gir plass til flaggknappene */
+        }
+      }
     </style>
   </head>
   <body>
