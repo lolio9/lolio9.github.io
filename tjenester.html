@@ -7,10 +7,13 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tjenester | Nettside Eksperten Jonli</title>
+    <title data-translate="services_title">
+      Tjenester | Nettside Eksperten Jonli
+    </title>
     <meta
       name="description"
       content="Profesjonelle nettsideløsninger skreddersydd for din bedrift"
+      data-translate="services_description"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,23 +40,69 @@
 
       gtag("config", "AW-17219060462");
     </script>
+    <style>
+      .language-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .language-switcher img {
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        object-fit: cover;
+        transition: transform 0.2s;
+      }
+      .language-switcher img:hover {
+        transform: scale(1.1);
+      }
+      .logo strong {
+        color: #0066cc;
+      }
+      .about-hero {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        padding: 4rem 0;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
+      <!-- Mine flaggknapper -->
+      <div class="language-switcher">
+        <a href="#" class="language-option" data-lang="no">
+          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+        </a>
+        <a href="#" class="language-option" data-lang="en">
+          <img src="usa-flag.jpg" alt="English" title="English" />
+        </a>
+      </div>
+
       <div class="container">
         <nav class="navbar">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
+          <a href="index.html" class="logo">
+            <span data-translate="logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
 
-          <!-- Kun én navigasjonsliste -->
+          <!-- Navigasjonsliste -->
           <ul class="nav-links" id="navLinks">
-            <!-- <button class="close-menu" id="closeMenu">×</button> -->
-            <li><a href="index.html">Hjem</a></li>
-            <li><a href="tjenester.html">Tjenester</a></li>
-            <li><a href="om-meg.html">Om meg</a></li>
-            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+            <li><a href="index.html" data-translate="home">Hjem</a></li>
+            <li>
+              <a href="tjenester.html" data-translate="services">Tjenester</a>
+            </li>
+            <li><a href="om-meg.html" data-translate="about">Om meg</a></li>
+            <li>
+              <a href="kontakt.html" class="nav-cta" data-translate="contact"
+                >Kontakt</a
+              >
+            </li>
           </ul>
 
           <!-- Hamburgermeny for mobil -->
@@ -80,6 +129,7 @@
                 margin-bottom: 1rem;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
               "
+              data-translate="services_hero_title"
             >
               Mine tjenester
             </h1>
@@ -91,6 +141,7 @@
                 max-width: 600px;
                 margin: 0 auto;
               "
+              data-translate="services_hero_subtitle"
             >
               Skreddersydde løsninger for din digitale tilstedeværelse
             </p>
@@ -108,43 +159,69 @@
             <div class="service-icon">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3>Nettsidedesign</h3>
-            <p>
+            <h3 data-translate="service1_title">Nettsidedesign</h3>
+            <p data-translate="service1_description">
               Moderne og brukervennlige design som engasjerer dine besøkende og
               konverterer til kunder
             </p>
             <ul class="service-features">
-              <li>
+              <li data-translate="service1_feature1">
                 <i class="fas fa-check"></i> Responsivt design for alle enheter
               </li>
-              <li><i class="fas fa-check"></i> Brukervennlig navigasjon</li>
-              <li>
+              <li data-translate="service1_feature2">
+                <i class="fas fa-check"></i> Brukervennlig navigasjon
+              </li>
+              <li data-translate="service1_feature3">
                 <i class="fas fa-check"></i> Tilpasset ditt merkevareimage
               </li>
             </ul>
-            <div class="service-price">Fra 2.000 kr</div>
-            <a href="kontakt.html" class="btn btn-outline">Bestill</a>
+            <div class="service-price" data-translate="service1_price">
+              Fra 2.000 kr
+            </div>
+            <a
+              href="kontakt.html"
+              class="btn btn-outline"
+              data-translate="order_button"
+              >Bestill</a
+            >
           </div>
 
           <!-- Service 2 (Featured) -->
           <div class="service-card featured">
-            <div class="featured-badge">Mest populær</div>
+            <div class="featured-badge" data-translate="popular_badge">
+              Mest populær
+            </div>
             <div class="service-icon">
               <i class="fas fa-globe"></i>
             </div>
-            <h3>Komplett nettside</h3>
-            <p>
+            <h3 data-translate="service2_title">Komplett nettside</h3>
+            <p data-translate="service2_description">
               Alt-i-ett løsning fra idé til ferdig nettside med innhold og
               publisering
             </p>
             <ul class="service-features">
-              <li><i class="fas fa-check"></i> Design og utvikling</li>
-              <li><i class="fas fa-check"></i> Grunnleggende SEO</li>
-              <li><i class="fas fa-check"></i> 1 måneds support inkludert</li>
-              <li><i class="fas fa-check"></i> Opplæring i bruk</li>
+              <li data-translate="service2_feature1">
+                <i class="fas fa-check"></i> Design og utvikling
+              </li>
+              <li data-translate="service2_feature2">
+                <i class="fas fa-check"></i> Grunnleggende SEO
+              </li>
+              <li data-translate="service2_feature3">
+                <i class="fas fa-check"></i> 1 måneds support inkludert
+              </li>
+              <li data-translate="service2_feature4">
+                <i class="fas fa-check"></i> Opplæring i bruk
+              </li>
             </ul>
-            <div class="service-price">Fra 3.500 kr</div>
-            <a href="kontakt.html" class="btn btn-primary">Bestill</a>
+            <div class="service-price" data-translate="service2_price">
+              Fra 3.500 kr
+            </div>
+            <a
+              href="kontakt.html"
+              class="btn btn-primary"
+              data-translate="order_button"
+              >Bestill</a
+            >
           </div>
 
           <!-- Service 3 -->
@@ -152,47 +229,80 @@
             <div class="service-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3>SEO Optimalisering</h3>
-            <p>
+            <h3 data-translate="service3_title">SEO Optimalisering</h3>
+            <p data-translate="service3_description">
               Forbedre din synlighet på søkemotorer og få mer relevant trafikk
             </p>
             <ul class="service-features">
-              <li><i class="fas fa-check"></i> Nøkkelordanalyse</li>
-              <li><i class="fas fa-check"></i> Teknisk SEO-audit</li>
-              <li><i class="fas fa-check"></i> Innholdsstrategi</li>
+              <li data-translate="service3_feature1">
+                <i class="fas fa-check"></i> Nøkkelordanalyse
+              </li>
+              <li data-translate="service3_feature2">
+                <i class="fas fa-check"></i> Teknisk SEO-audit
+              </li>
+              <li data-translate="service3_feature3">
+                <i class="fas fa-check"></i> Innholdsstrategi
+              </li>
             </ul>
-            <div class="service-price">Fra 2.000 kr/mnd</div>
-            <a href="kontakt.html" class="btn btn-outline">Bestill</a>
+            <div class="service-price" data-translate="service3_price">
+              Fra 2.000 kr/mnd
+            </div>
+            <a
+              href="kontakt.html"
+              class="btn btn-outline"
+              data-translate="order_button"
+              >Bestill</a
+            >
           </div>
         </div>
 
         <!-- Additional Services -->
         <div class="additional-services">
-          <h2 class="text-center">Tilleggstjenester</h2>
+          <h2 class="text-center" data-translate="additional_services_title">
+            Tilleggstjenester
+          </h2>
           <div class="add-services-grid">
             <div class="add-service">
               <i class="fas fa-sync-alt"></i>
-              <h4>Nettsidevedlikehold</h4>
-              <p>Månedlig oppdatering og vedlikehold av din nettside</p>
-              <span class="price">Fra 1.500 kr/mnd</span>
+              <h4 data-translate="add_service1_title">Nettsidevedlikehold</h4>
+              <p data-translate="add_service1_description">
+                Månedlig oppdatering og vedlikehold av din nettside
+              </p>
+              <span class="price" data-translate="add_service1_price"
+                >Fra 1.500 kr/mnd</span
+              >
             </div>
             <div class="add-service">
               <i class="fas fa-store"></i>
-              <h4>E-handelsløsning</h4>
-              <p>Enkel nettbutikk for din virksomhet</p>
-              <span class="price">Fra 15.000 kr</span>
+              <h4 data-translate="add_service2_title">E-handelsløsning</h4>
+              <p data-translate="add_service2_description">
+                Enkel nettbutikk for din virksomhet
+              </p>
+              <span class="price" data-translate="add_service2_price"
+                >Fra 15.000 kr</span
+              >
             </div>
             <div class="add-service">
               <i class="fas fa-pencil-alt"></i>
-              <h4>Innholdsproduksjon</h4>
-              <p>Profesjonelle tekster og bilder for din nettside</p>
-              <span class="price">Fra 1000 kr/side</span>
+              <h4 data-translate="add_service3_title">Innholdsproduksjon</h4>
+              <p data-translate="add_service3_description">
+                Profesjonelle tekster og bilder for din nettside
+              </p>
+              <span class="price" data-translate="add_service3_price"
+                >Fra 1000 kr/side</span
+              >
             </div>
             <div class="add-service">
               <i class="fas fa-check"></i>
-              <h4>Spesialpris for startups og unge bedrifter! 🚀</h4>
-              <p>50% rabatt på ditt første prosjekt.</p>
-              <span class="price">50% rabatt</span>
+              <h4 data-translate="add_service4_title">
+                Spesialpris for startups og unge bedrifter! 🚀
+              </h4>
+              <p data-translate="add_service4_description">
+                50% rabatt på ditt første prosjekt.
+              </p>
+              <span class="price" data-translate="add_service4_price"
+                >50% rabatt</span
+              >
             </div>
           </div>
         </div>
@@ -202,15 +312,19 @@
     <!-- Oppdatert FAQ-seksjon i tjenester.html -->
     <section class="faq">
       <div class="container">
-        <h2 class="text-center">Ofte stilte spørsmål</h2>
+        <h2 class="text-center" data-translate="faq_title">
+          Ofte stilte spørsmål
+        </h2>
         <div class="faq-grid">
           <div class="faq-item">
             <div class="faq-question">
-              <h3>Hvor lang tid tar det å lage en nettside?</h3>
+              <h3 data-translate="faq1_question">
+                Hvor lang tid tar det å lage en nettside?
+              </h3>
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-              <p>
+              <p data-translate="faq1_answer">
                 Tiden varierer etter omfang, men en grunnleggende nettside tar
                 typisk 1-4 uker fra start til ferdigstillelse. For Støren
                 Taxi-prosjektet brukte jeg for eksempel 1 uke fra første møte
@@ -227,9 +341,16 @@
     <section class="cta">
       <div class="container">
         <div class="cta-content text-center">
-          <h2>Klar til å starte ditt prosjekt?</h2>
-          <p>Ta kontakt for en uforpliktende samtale om dine behov</p>
-          <a href="kontakt.html" class="btn btn-primary">Kontakt meg</a>
+          <h2 data-translate="cta_title">Klar til å starte ditt prosjekt?</h2>
+          <p data-translate="cta_text">
+            Ta kontakt for en uforpliktende samtale om dine behov
+          </p>
+          <a
+            href="kontakt.html"
+            class="btn btn-primary"
+            data-translate="cta_button"
+            >Kontakt meg</a
+          >
         </div>
       </div>
     </section>
@@ -238,18 +359,23 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content text-center">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
-          <p>Profesjonelle nettsideløsninger siden 2025</p>
+          <a href="index.html" class="logo">
+            <span data-translate="footer_logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
+          <p data-translate="footer_text">
+            Profesjonelle nettsideløsninger siden 2025
+          </p>
 
           <div class="footer-links">
-            <a href="tjenester.html">Tjenester</a>
-            <a href="om-meg.html">Om meg</a>
-            <a href="kontakt.html">Kontakt</a>
+            <a href="tjenester.html" data-translate="footer_services"
+              >Tjenester</a
+            >
+            <a href="om-meg.html" data-translate="footer_about">Om meg</a>
+            <a href="kontakt.html" data-translate="footer_contact">Kontakt</a>
           </div>
 
-          <p class="copyright">
+          <p class="copyright" data-translate="copyright">
             &copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.
           </p>
         </div>
@@ -282,12 +408,190 @@
       });
     </script>
 
-    <!-- JavaScript for hamburgermeny -->
+    <!-- JavaScript for hamburgermeny og språkbytte -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // Oversettelsesdata
+      const translations = {
+        no: {
+          services_title: "Tjenester | Nettside Eksperten Jonli",
+          services_description:
+            "Profesjonelle nettsideløsninger skreddersydd for din bedrift",
+          logo: "Nettside Eksperten",
+          home: "Hjem",
+          services: "Tjenester",
+          about: "Om meg",
+          contact: "Kontakt",
+          services_hero_title: "Mine tjenester",
+          services_hero_subtitle:
+            "Skreddersydde løsninger for din digitale tilstedeværelse",
+          service1_title: "Nettsidedesign",
+          service1_description:
+            "Moderne og brukervennlige design som engasjerer dine besøkende og konverterer til kunder",
+          service1_feature1:
+            "<i class='fas fa-check'></i> Responsivt design for alle enheter",
+          service1_feature2:
+            "<i class='fas fa-check'></i> Brukervennlig navigasjon",
+          service1_feature3:
+            "<i class='fas fa-check'></i> Tilpasset ditt merkevareimage",
+          service1_price: "Fra 2.000 kr",
+          service2_title: "Komplett nettside",
+          service2_description:
+            "Alt-i-ett løsning fra idé til ferdig nettside med innhold og publisering",
+          service2_feature1: "<i class='fas fa-check'></i> Design og utvikling",
+          service2_feature2: "<i class='fas fa-check'></i> Grunnleggende SEO",
+          service2_feature3:
+            "<i class='fas fa-check'></i> 1 måneds support inkludert",
+          service2_feature4: "<i class='fas fa-check'></i> Opplæring i bruk",
+          service2_price: "Fra 3.500 kr",
+          service3_title: "SEO Optimalisering",
+          service3_description:
+            "Forbedre din synlighet på søkemotorer og få mer relevant trafikk",
+          service3_feature1: "<i class='fas fa-check'></i> Nøkkelordanalyse",
+          service3_feature2: "<i class='fas fa-check'></i> Teknisk SEO-audit",
+          service3_feature3: "<i class='fas fa-check'></i> Innholdsstrategi",
+          service3_price: "Fra 2.000 kr/mnd",
+          order_button: "Bestill",
+          popular_badge: "Mest populær",
+          additional_services_title: "Tilleggstjenester",
+          add_service1_title: "Nettsidevedlikehold",
+          add_service1_description:
+            "Månedlig oppdatering og vedlikehold av din nettside",
+          add_service1_price: "Fra 1.500 kr/mnd",
+          add_service2_title: "E-handelsløsning",
+          add_service2_description: "Enkel nettbutikk for din virksomhet",
+          add_service2_price: "Fra 15.000 kr",
+          add_service3_title: "Innholdsproduksjon",
+          add_service3_description:
+            "Profesjonelle tekster og bilder for din nettside",
+          add_service3_price: "Fra 1000 kr/side",
+          add_service4_title: "Spesialpris for startups og unge bedrifter! 🚀",
+          add_service4_description: "50% rabatt på ditt første prosjekt.",
+          add_service4_price: "50% rabatt",
+          faq_title: "Ofte stilte spørsmål",
+          faq1_question: "Hvor lang tid tar det å lage en nettside?",
+          faq1_answer:
+            "Tiden varierer etter omfang, men en grunnleggende nettside tar typisk 1-4 uker fra start til ferdigstillelse. For Støren Taxi-prosjektet brukte jeg for eksempel 1 uke fra første møte til lansering.",
+          cta_title: "Klar til å starte ditt prosjekt?",
+          cta_text: "Ta kontakt for en uforpliktende samtale om dine behov",
+          cta_button: "Kontakt meg",
+          footer_logo: "Nettside Eksperten",
+          footer_text: "Profesjonelle nettsideløsninger siden 2025",
+          footer_services: "Tjenester",
+          footer_about: "Om meg",
+          footer_contact: "Kontakt",
+          copyright:
+            "&copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.",
+        },
+        en: {
+          services_title: "Services | Website Expert Jonli",
+          services_description:
+            "Professional website solutions tailored for your business",
+          logo: "Website Expert",
+          home: "Home",
+          services: "Services",
+          about: "About me",
+          contact: "Contact",
+          services_hero_title: "My services",
+          services_hero_subtitle:
+            "Tailored solutions for your digital presence",
+          service1_title: "Website Design",
+          service1_description:
+            "Modern and user-friendly designs that engage your visitors and convert to customers",
+          service1_feature1:
+            "<i class='fas fa-check'></i> Responsive design for all devices",
+          service1_feature2:
+            "<i class='fas fa-check'></i> User-friendly navigation",
+          service1_feature3:
+            "<i class='fas fa-check'></i> Customized to your brand image",
+          service1_price: "From 2,000 NOK",
+          service2_title: "Complete Website",
+          service2_description:
+            "All-in-one solution from idea to finished website with content and publishing",
+          service2_feature1:
+            "<i class='fas fa-check'></i> Design and development",
+          service2_feature2: "<i class='fas fa-check'></i> Basic SEO",
+          service2_feature3:
+            "<i class='fas fa-check'></i> 1 month support included",
+          service2_feature4: "<i class='fas fa-check'></i> User training",
+          service2_price: "From 3,500 NOK",
+          service3_title: "SEO Optimization",
+          service3_description:
+            "Improve your search engine visibility and get more relevant traffic",
+          service3_feature1: "<i class='fas fa-check'></i> Keyword analysis",
+          service3_feature2: "<i class='fas fa-check'></i> Technical SEO audit",
+          service3_feature3: "<i class='fas fa-check'></i> Content strategy",
+          service3_price: "From 2,000 NOK/month",
+          order_button: "Order",
+          popular_badge: "Most popular",
+          additional_services_title: "Additional services",
+          add_service1_title: "Website Maintenance",
+          add_service1_description:
+            "Monthly updates and maintenance for your website",
+          add_service1_price: "From 1,500 NOK/month",
+          add_service2_title: "E-commerce Solution",
+          add_service2_description: "Simple online store for your business",
+          add_service2_price: "From 15,000 NOK",
+          add_service3_title: "Content Production",
+          add_service3_description:
+            "Professional texts and images for your website",
+          add_service3_price: "From 1000 NOK/page",
+          add_service4_title:
+            "Special price for startups and young businesses! 🚀",
+          add_service4_description: "50% discount on your first project.",
+          add_service4_price: "50% discount",
+          faq_title: "Frequently Asked Questions",
+          faq1_question: "How long does it take to create a website?",
+          faq1_answer:
+            "The time varies depending on scope, but a basic website typically takes 1-4 weeks from start to completion. For the Støren Taxi project, for example, I used 1 week from the first meeting to launch.",
+          cta_title: "Ready to start your project?",
+          cta_text:
+            "Contact me for a no-obligation conversation about your needs",
+          cta_button: "Contact me",
+          footer_logo: "Website Expert",
+          footer_text: "Professional website solutions since 2025",
+          footer_services: "Services",
+          footer_about: "About me",
+          footer_contact: "Contact",
+          copyright: "&copy; 2025 Website Expert Jonli. All rights reserved.",
+        },
+      };
+
+      // Bytt språk
+      function changeLanguage(lang) {
+        // Oppdater alle oversettbare elementer
+        document.querySelectorAll("[data-translate]").forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          if (translations[lang] && translations[lang][key]) {
+            if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+              element.setAttribute("placeholder", translations[lang][key]);
+            } else {
+              element.innerHTML = translations[lang][key];
+            }
+          }
+        });
+
+        // Oppdater tittel
+        document.title = translations[lang].services_title;
+
+        localStorage.setItem("language", lang);
+      }
+
+      // Last inn språk ved oppstart
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("language") || "no";
+        changeLanguage(savedLang);
+
+        // Klikk-event for språkknapper
+        document.querySelectorAll(".language-option").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            changeLanguage(button.getAttribute("data-lang"));
+          });
+        });
+
+        // Hamburgermeny funksjonalitet
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
-        const closeMenu = document.getElementById("closeMenu");
         const overlay = document.createElement("div");
         overlay.className = "overlay";
         document.body.appendChild(overlay);
@@ -302,7 +606,6 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
-        closeMenu.addEventListener("click", toggleMenu);
         overlay.addEventListener("click", toggleMenu);
 
         navLinks.addEventListener("click", function (e) {
