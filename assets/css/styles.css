@@ -1049,3 +1049,13 @@ button:disabled {
 .language-switcher img:hover {
   opacity: 0.8;
 }
+
+.goog-te-banner-frame {
+  display: none !important;
+} /* Skjul Google-banner */
+#google_translate_element {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
