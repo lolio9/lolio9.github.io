@@ -88,87 +88,115 @@
       <div id="google_translate_element"></div>
 
       <script>
-        // 1. Først last jQuery (for enklere DOM-håndtering)
-        function loadjQuery() {
-          return new Promise((resolve) => {
-            if (window.jQuery) {
-              return resolve();
-            }
-            const script = document.createElement("script");
-            script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
-            script.onload = resolve;
-            document.head.appendChild(script);
-          });
-        }
-
-        // 2. Last Google Translate
+        // 1. Last Google Translate
         function loadGoogleTranslate() {
           return new Promise((resolve) => {
+            if (window.google && google.translate) {
+              return resolve();
+            }
+
             const script = document.createElement("script");
             script.src =
               "https://translate.google.com/translate_a/element.js?cb=googleTranslateInit";
             document.head.appendChild(script);
+
             window.googleTranslateInit = resolve;
           });
         }
 
-        // 3. Initialiser Google Translate
-        async function initTranslation() {
-          await loadjQuery();
-          await loadGoogleTranslate();
-
-          // Vent til Google Translate er klar
-          const checkReady = setInterval(() => {
-            if (
-              window.google &&
-              google.translate &&
-              google.translate.TranslateElement
-            ) {
-              clearInterval(checkReady);
-              setupTranslation();
+        // 2. Hjelpefunksjon for å vente på element
+        function waitForElement(selector) {
+          return new Promise((resolve) => {
+            if (document.querySelector(selector)) {
+              return resolve(document.querySelector(selector));
             }
-          }, 100);
+
+            const observer = new MutationObserver(() => {
+              if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+              }
+            });
+
+            observer.observe(document.body, {
+              childList: true,
+              subtree: true,
+            });
+          });
         }
 
-        // 4. Sett opp oversettelse
-        function setupTranslation() {
-          new google.translate.TranslateElement(
-            {
-              pageLanguage: "no",
-              includedLanguages: "no,en",
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false,
-            },
-            "google_translate_element"
-          );
+        // 3. Initialiser oversettelse
+        async function initTranslation() {
+          try {
+            await loadGoogleTranslate();
 
-          // Sett opp flaggknappene
-          $(".language-option").on("click", function (e) {
-            e.preventDefault();
-            const lang = $(this).data("lang");
-            $(".goog-te-combo").val(lang).trigger("change");
+            // Vent til Google Translate er klar
+            await new Promise((resolve) => {
+              const checkReady = setInterval(() => {
+                if (
+                  window.google &&
+                  google.translate &&
+                  google.translate.TranslateElement
+                ) {
+                  clearInterval(checkReady);
+                  resolve();
+                }
+              }, 100);
+            });
 
-            // Tving gjennomføring av oversettelse
+            // Sett opp Google Translate
+            new google.translate.TranslateElement(
+              {
+                pageLanguage: "no",
+                includedLanguages: "no,en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+              },
+              "google_translate_element"
+            );
+
+            // Vent til select-element er tilgjengelig
+            const select = await waitForElement(".goog-te-combo");
+
+            // Sett opp flaggknappene
+            document.querySelectorAll(".language-option").forEach((button) => {
+              button.addEventListener("click", function (e) {
+                e.preventDefault();
+                const lang = this.getAttribute("data-lang");
+                select.value = lang;
+                select.dispatchEvent(new Event("change"));
+
+                // Tving gjennomføring av oversettelse
+                setTimeout(() => {
+                  if (
+                    window.google &&
+                    google.translate &&
+                    google.translate.translatePage
+                  ) {
+                    google.translate.translatePage();
+                  }
+                }, 300);
+              });
+            });
+
+            // Skjul Google-elementer
             setTimeout(() => {
-              if (
-                window.google &&
-                google.translate &&
-                google.translate.translatePage
-              ) {
-                google.translate.translatePage();
-              }
-            }, 300);
-          });
-
-          // Skjul Google-elementer
-          setTimeout(() => {
-            $(".goog-te-combo, .goog-te-banner-frame, .skiptranslate").hide();
-          }, 1000);
+              document
+                .querySelectorAll(
+                  ".goog-te-combo, .goog-te-banner-frame, .skiptranslate"
+                )
+                .forEach((el) => {
+                  el.style.display = "none";
+                });
+            }, 1000);
+          } catch (error) {
+            console.error("Feil under initialisering:", error);
+          }
         }
 
         // Start lasting når dokumentet er klart
-        $(document).ready(function () {
-          initTranslation().catch(console.error);
+        document.addEventListener("DOMContentLoaded", function () {
+          initTranslation();
         });
       </script>
 
