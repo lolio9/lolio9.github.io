@@ -98,14 +98,18 @@
 
             // Funksjon for å initialisere Google Translate
             function initGoogleTranslate() {
-              if (typeof google !== "undefined" && google.translate) {
+              if (
+                typeof google !== "undefined" &&
+                google.translate &&
+                google.translate.TranslateElement
+              ) {
                 new google.translate.TranslateElement(
                   {
                     pageLanguage: "no",
                     includedLanguages: "no,en",
                     layout:
                       google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false, // Forhindrer automatisk visning av banner
+                    autoDisplay: false,
                   },
                   "google_translate_element"
                 );
@@ -113,6 +117,14 @@
                 googleTranslateReady = true;
                 console.log("Google Translate er klar");
                 setupLanguageButtons();
+
+                // Skjul Google-elementer manuelt
+                setTimeout(() => {
+                  const elements = document.querySelectorAll(
+                    ".goog-te-combo, .goog-te-banner-frame, .skiptranslate"
+                  );
+                  elements.forEach((el) => (el.style.display = "none"));
+                }, 1000);
               } else {
                 console.log("Venter på Google Translate...");
                 setTimeout(initGoogleTranslate, 500);
@@ -147,8 +159,16 @@
                 select.value = lang;
                 select.dispatchEvent(new Event("change"));
                 console.log("Språk endret til:", lang);
+
+                // Tving en refresh av oversettelsen
+                if (window.google && google.translate) {
+                  google.translate.translatePage();
+                }
               } else {
-                console.log("Fant ikke Google Translate select-element");
+                console.log(
+                  "Fant ikke Google Translate select-element - prøver igjen"
+                );
+                setTimeout(() => changeLanguage(lang), 500);
               }
             }
 
@@ -165,17 +185,16 @@
             document.addEventListener("DOMContentLoaded", function () {
               loadGoogleTranslate();
 
-              // Fallback: Sjekk om Google Translate er lastet hvert halvsekund
-              const checkInterval = setInterval(() => {
+              // Alternativ initiering hvis callback feiler
+              setTimeout(() => {
                 if (
+                  !googleTranslateReady &&
                   typeof google !== "undefined" &&
-                  google.translate &&
-                  !googleTranslateReady
+                  google.translate
                 ) {
-                  clearInterval(checkInterval);
                   initGoogleTranslate();
                 }
-              }, 500);
+              }, 2000);
             });
           </script>
         </body>
