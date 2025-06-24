@@ -46,7 +46,6 @@
         gap: 10px;
         z-index: 1000;
       }
-
       .language-switcher img {
         width: 30px;
         height: 20px;
@@ -56,9 +55,11 @@
         object-fit: cover;
         transition: transform 0.2s;
       }
-
       .language-switcher img:hover {
         transform: scale(1.1);
+      }
+      .logo strong {
+        color: #0066cc; /* Blå farge for Jonli */
       }
     </style>
   </head>
@@ -77,9 +78,10 @@
 
       <div class="container">
         <nav class="navbar">
-          <a href="index.html" class="logo" data-translate="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
+          <a href="index.html" class="logo">
+            <span data-translate="logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
 
           <!-- Kun én navigasjonsliste -->
           <ul class="nav-links" id="navLinks">
