@@ -38,14 +38,26 @@
       gtag("config", "AW-17219060462");
     </script>
     <style>
-      .language-switcher {
+      /* Desktop stil - flagg i hjørnet */
+      .language-switcher-desktop {
+        position: fixed;
+        top: 20px;
+        right: 20px;
         display: flex;
-        justify-content: flex-end;
-        gap: 12px;
-        padding: 10px 20px;
+        gap: 10px;
+        z-index: 1000;
+      }
+
+      /* Mobil stil - flagg under nav */
+      .language-switcher-mobile {
+        display: none;
+        justify-content: center;
+        gap: 15px;
+        padding: 8px 10px;
         background-color: #f8f9fa;
         border-bottom: 1px solid #e9ecef;
       }
+
       .language-switcher img {
         width: 30px;
         height: 20px;
@@ -69,10 +81,11 @@
 
       /* Mobiltilpasning */
       @media (max-width: 768px) {
-        .language-switcher {
-          justify-content: center;
-          padding: 8px 10px;
-          gap: 15px;
+        .language-switcher-desktop {
+          display: none;
+        }
+        .language-switcher-mobile {
+          display: flex;
         }
         .language-switcher img {
           width: 36px;
@@ -113,7 +126,18 @@
           </button>
         </nav>
 
-        <div class="language-switcher">
+        <!-- Mobil flaggknapper (under navbaren) -->
+        <div class="language-switcher-mobile">
+          <a href="#" class="language-option" data-lang="no">
+            <img src="R.jpeg" alt="Norsk" title="Norsk" />
+          </a>
+          <a href="#" class="language-option" data-lang="en">
+            <img src="usa-flag.jpg" alt="English" title="English" />
+          </a>
+        </div>
+
+        <!-- Desktop flaggknapper (øverst til høyre) -->
+        <div class="language-switcher-desktop">
           <a href="#" class="language-option" data-lang="no">
             <img src="R.jpeg" alt="Norsk" title="Norsk" />
           </a>
