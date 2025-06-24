@@ -58,6 +58,11 @@
         border-bottom: 1px solid #e9ecef;
       }
 
+      /* Oppdater denne delen av CSS-en */
+      .language-switcher a {
+        display: inline-block; /* Sikrer at lenker ikke tar mer plass enn nødvendig */
+      }
+
       .language-switcher img {
         width: 30px;
         height: 20px;
@@ -66,6 +71,7 @@
         border-radius: 4px;
         object-fit: cover;
         transition: transform 0.2s;
+        display: block; /* Fjerner ekstra mellomrom under bilder */
       }
       .language-switcher img:hover {
         transform: scale(1.1);
