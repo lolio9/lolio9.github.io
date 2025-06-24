@@ -87,107 +87,6 @@
       <!-- Google Translate Container -->
       <div id="google_translate_element"></div>
 
-      <script>
-        // Global variabel for å holde styr på om Google Translate er klar
-        let googleTranslateReady = false;
-
-        // Funksjon for å initialisere Google Translate
-        function initGoogleTranslate() {
-          if (
-            typeof google !== "undefined" &&
-            google.translate &&
-            google.translate.TranslateElement
-          ) {
-            new google.translate.TranslateElement(
-              {
-                pageLanguage: "no",
-                includedLanguages: "no,en",
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false,
-              },
-              "google_translate_element"
-            );
-
-            googleTranslateReady = true;
-            console.log("Google Translate er klar");
-            setupLanguageButtons();
-
-            // Skjul Google-elementer manuelt
-            setTimeout(() => {
-              const elements = document.querySelectorAll(
-                ".goog-te-combo, .goog-te-banner-frame, .skiptranslate"
-              );
-              elements.forEach((el) => (el.style.display = "none"));
-            }, 1000);
-          } else {
-            console.log("Venter på Google Translate...");
-            setTimeout(initGoogleTranslate, 500);
-          }
-        }
-
-        // Funksjon for flaggknappene
-        function setupLanguageButtons() {
-          document.querySelectorAll(".language-option").forEach((button) => {
-            button.addEventListener("click", function (e) {
-              e.preventDefault();
-              const lang = this.getAttribute("data-lang");
-              changeLanguage(lang);
-            });
-          });
-        }
-
-        // Bytt språk
-        function changeLanguage(lang) {
-          if (!googleTranslateReady) {
-            console.log("Google Translate er ikke klar ennå, prøver igjen...");
-            setTimeout(() => changeLanguage(lang), 500);
-            return;
-          }
-
-          const select = document.querySelector(".goog-te-combo");
-          if (select) {
-            select.value = lang;
-            select.dispatchEvent(new Event("change"));
-            console.log("Språk endret til:", lang);
-
-            // Tving en refresh av oversettelsen
-            if (window.google && google.translate) {
-              google.translate.translatePage();
-            }
-          } else {
-            console.log(
-              "Fant ikke Google Translate select-element - prøver igjen"
-            );
-            setTimeout(() => changeLanguage(lang), 500);
-          }
-        }
-
-        // Last Google Translate
-        function loadGoogleTranslate() {
-          const script = document.createElement("script");
-          script.src =
-            "https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate";
-          script.async = true;
-          document.head.appendChild(script);
-        }
-
-        // Start lasting når dokumentet er klart
-        document.addEventListener("DOMContentLoaded", function () {
-          loadGoogleTranslate();
-
-          // Alternativ initiering hvis callback feiler
-          setTimeout(() => {
-            if (
-              !googleTranslateReady &&
-              typeof google !== "undefined" &&
-              google.translate
-            ) {
-              initGoogleTranslate();
-            }
-          }, 2000);
-        });
-      </script>
-
       <div class="container">
         <nav class="navbar">
           <a href="index.html" class="logo"
@@ -211,6 +110,90 @@
           </button>
         </nav>
       </div>
+      <script>
+        // 1. Først last jQuery (for enklere DOM-håndtering)
+        function loadjQuery() {
+          return new Promise((resolve) => {
+            if (window.jQuery) {
+              return resolve();
+            }
+            const script = document.createElement("script");
+            script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+            script.onload = resolve;
+            document.head.appendChild(script);
+          });
+        }
+
+        // 2. Last Google Translate
+        function loadGoogleTranslate() {
+          return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src =
+              "https://translate.google.com/translate_a/element.js?cb=googleTranslateInit";
+            document.head.appendChild(script);
+            window.googleTranslateInit = resolve;
+          });
+        }
+
+        // 3. Initialiser Google Translate
+        async function initTranslation() {
+          await loadjQuery();
+          await loadGoogleTranslate();
+
+          // Vent til Google Translate er klar
+          const checkReady = setInterval(() => {
+            if (
+              window.google &&
+              google.translate &&
+              google.translate.TranslateElement
+            ) {
+              clearInterval(checkReady);
+              setupTranslation();
+            }
+          }, 100);
+        }
+
+        // 4. Sett opp oversettelse
+        function setupTranslation() {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: "no",
+              includedLanguages: "no,en",
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false,
+            },
+            "google_translate_element"
+          );
+
+          // Sett opp flaggknappene
+          $(".language-option").on("click", function (e) {
+            e.preventDefault();
+            const lang = $(this).data("lang");
+            $(".goog-te-combo").val(lang).trigger("change");
+
+            // Tving gjennomføring av oversettelse
+            setTimeout(() => {
+              if (
+                window.google &&
+                google.translate &&
+                google.translate.translatePage
+              ) {
+                google.translate.translatePage();
+              }
+            }, 300);
+          });
+
+          // Skjul Google-elementer
+          setTimeout(() => {
+            $(".goog-te-combo, .goog-te-banner-frame, .skiptranslate").hide();
+          }, 1000);
+        }
+
+        // Start lasting når dokumentet er klart
+        $(document).ready(function () {
+          initTranslation().catch(console.error);
+        });
+      </script>
     </header>
 
     <!-- Hero Section -->
