@@ -38,30 +38,24 @@
       gtag("config", "AW-17219060462");
     </script>
     <style>
-      /* Desktop - flagg i hjørnet */
-      .language-switcher {
+      /* Desktop stil - flagg i hjørnet */
+      .language-switcher-desktop {
         position: fixed;
         top: 20px;
         right: 20px;
         display: flex;
         gap: 10px;
         z-index: 1000;
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 8px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
-      /* Mobil - flagg under nav */
-      @media (max-width: 768px) {
-        .language-switcher {
-          position: static;
-          justify-content: center;
-          padding: 10px 0;
-          background-color: #f8f9fa;
-          border-bottom: 1px solid #e9ecef;
-          margin-top: -1px;
-        }
+      /* Mobil stil - flagg under nav */
+      .language-switcher-mobile {
+        display: none;
+        justify-content: center;
+        gap: 15px;
+        padding: 8px 10px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
       }
 
       .language-switcher img {
@@ -70,11 +64,33 @@
         cursor: pointer;
         border: 1px solid #ddd;
         border-radius: 4px;
+        object-fit: cover;
         transition: transform 0.2s;
       }
-
       .language-switcher img:hover {
         transform: scale(1.1);
+      }
+      .logo strong {
+        color: #0066cc;
+      }
+      .about-hero {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        padding: 4rem 0;
+        color: white;
+      }
+
+      /* Mobiltilpasning */
+      @media (max-width: 768px) {
+        .language-switcher-desktop {
+          display: none;
+        }
+        .language-switcher-mobile {
+          display: flex;
+        }
+        .language-switcher img {
+          width: 36px;
+          height: 24px;
+        }
       }
     </style>
   </head>
@@ -110,18 +126,7 @@
           </button>
         </nav>
 
-        <!-- Mobil flaggknapper (under navbaren) -->
-        <div class="language-switcher-mobile">
-          <a href="#" class="language-option" data-lang="no">
-            <img src="R.jpeg" alt="Norsk" title="Norsk" />
-          </a>
-          <a href="#" class="language-option" data-lang="en">
-            <img src="usa-flag.jpg" alt="English" title="English" />
-          </a>
-        </div>
-
-        <!-- Desktop flaggknapper (øverst til høyre) -->
-        <div class="language-switcher-desktop">
+        <div class="language-switcher">
           <a href="#" class="language-option" data-lang="no">
             <img src="R.jpeg" alt="Norsk" title="Norsk" />
           </a>
