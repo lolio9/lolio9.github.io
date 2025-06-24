@@ -37,168 +37,157 @@
 
       gtag("config", "AW-17219060462");
     </script>
+    <style>
+      /* Skjul Google Translate UI fullstendig */
+      .goog-te-combo,
+      .goog-te-banner-frame,
+      .goog-te-gadget,
+      .goog-te-footer,
+      .goog-logo-link {
+        display: none !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+      }
+      #google_translate_element {
+        position: absolute;
+        left: -9999px;
+      }
+
+      /* Stil for dine flaggknapper */
+      .language-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .language-switcher img {
+        width: 30px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+    </style>
   </head>
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
-      <!DOCTYPE html>
-      <html lang="no">
-        <head>
-          <style>
-            /* Skjul Google Translate UI fullstendig */
-            .goog-te-combo,
-            .goog-te-banner-frame,
-            .goog-te-gadget,
-            .goog-te-footer,
-            .goog-logo-link {
-              display: none !important;
-              opacity: 0 !important;
-              height: 0 !important;
-              width: 0 !important;
-            }
-            #google_translate_element {
-              position: absolute;
-              left: -9999px;
-            }
+      <!-- Mine flaggknapper -->
+      <div class="language-switcher">
+        <a href="#" class="language-option" data-lang="no">
+          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+        </a>
+        <a href="#" class="language-option" data-lang="en">
+          <img src="usa-flag.jpg" alt="English" title="English" />
+        </a>
+      </div>
 
-            /* Stil for dine flaggknapper */
-            .language-switcher {
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              display: flex;
-              gap: 10px;
-              z-index: 1000;
-            }
-            .language-switcher img {
-              width: 30px;
-              cursor: pointer;
-              border: 1px solid #ddd;
-              border-radius: 3px;
-            }
-          </style>
-        </head>
-        <body>
-          <!-- Mine flaggknapper -->
-          <div class="language-switcher">
-            <a href="#" class="language-option" data-lang="no">
-              <img src="R.jpeg" alt="Norsk" title="Norsk" />
-            </a>
-            <a href="#" class="language-option" data-lang="en">
-              <img src="usa-flag.jpg" alt="English" title="English" />
-            </a>
-          </div>
+      <!-- Google Translate Container -->
+      <div id="google_translate_element"></div>
 
-          <!-- Google Translate Container -->
-          <div id="google_translate_element"></div>
+      <script>
+        // Global variabel for å holde styr på om Google Translate er klar
+        let googleTranslateReady = false;
 
-          <script>
-            // Global variabel for å holde styr på om Google Translate er klar
-            let googleTranslateReady = false;
+        // Funksjon for å initialisere Google Translate
+        function initGoogleTranslate() {
+          if (
+            typeof google !== "undefined" &&
+            google.translate &&
+            google.translate.TranslateElement
+          ) {
+            new google.translate.TranslateElement(
+              {
+                pageLanguage: "no",
+                includedLanguages: "no,en",
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+              },
+              "google_translate_element"
+            );
 
-            // Funksjon for å initialisere Google Translate
-            function initGoogleTranslate() {
-              if (
-                typeof google !== "undefined" &&
-                google.translate &&
-                google.translate.TranslateElement
-              ) {
-                new google.translate.TranslateElement(
-                  {
-                    pageLanguage: "no",
-                    includedLanguages: "no,en",
-                    layout:
-                      google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false,
-                  },
-                  "google_translate_element"
-                );
+            googleTranslateReady = true;
+            console.log("Google Translate er klar");
+            setupLanguageButtons();
 
-                googleTranslateReady = true;
-                console.log("Google Translate er klar");
-                setupLanguageButtons();
+            // Skjul Google-elementer manuelt
+            setTimeout(() => {
+              const elements = document.querySelectorAll(
+                ".goog-te-combo, .goog-te-banner-frame, .skiptranslate"
+              );
+              elements.forEach((el) => (el.style.display = "none"));
+            }, 1000);
+          } else {
+            console.log("Venter på Google Translate...");
+            setTimeout(initGoogleTranslate, 500);
+          }
+        }
 
-                // Skjul Google-elementer manuelt
-                setTimeout(() => {
-                  const elements = document.querySelectorAll(
-                    ".goog-te-combo, .goog-te-banner-frame, .skiptranslate"
-                  );
-                  elements.forEach((el) => (el.style.display = "none"));
-                }, 1000);
-              } else {
-                console.log("Venter på Google Translate...");
-                setTimeout(initGoogleTranslate, 500);
-              }
-            }
-
-            // Funksjon for flaggknappene
-            function setupLanguageButtons() {
-              document
-                .querySelectorAll(".language-option")
-                .forEach((button) => {
-                  button.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute("data-lang");
-                    changeLanguage(lang);
-                  });
-                });
-            }
-
-            // Bytt språk
-            function changeLanguage(lang) {
-              if (!googleTranslateReady) {
-                console.log(
-                  "Google Translate er ikke klar ennå, prøver igjen..."
-                );
-                setTimeout(() => changeLanguage(lang), 500);
-                return;
-              }
-
-              const select = document.querySelector(".goog-te-combo");
-              if (select) {
-                select.value = lang;
-                select.dispatchEvent(new Event("change"));
-                console.log("Språk endret til:", lang);
-
-                // Tving en refresh av oversettelsen
-                if (window.google && google.translate) {
-                  google.translate.translatePage();
-                }
-              } else {
-                console.log(
-                  "Fant ikke Google Translate select-element - prøver igjen"
-                );
-                setTimeout(() => changeLanguage(lang), 500);
-              }
-            }
-
-            // Last Google Translate
-            function loadGoogleTranslate() {
-              const script = document.createElement("script");
-              script.src =
-                "https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate";
-              script.async = true;
-              document.head.appendChild(script);
-            }
-
-            // Start lasting når dokumentet er klart
-            document.addEventListener("DOMContentLoaded", function () {
-              loadGoogleTranslate();
-
-              // Alternativ initiering hvis callback feiler
-              setTimeout(() => {
-                if (
-                  !googleTranslateReady &&
-                  typeof google !== "undefined" &&
-                  google.translate
-                ) {
-                  initGoogleTranslate();
-                }
-              }, 2000);
+        // Funksjon for flaggknappene
+        function setupLanguageButtons() {
+          document.querySelectorAll(".language-option").forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              const lang = this.getAttribute("data-lang");
+              changeLanguage(lang);
             });
-          </script>
-        </body>
-      </html>
+          });
+        }
+
+        // Bytt språk
+        function changeLanguage(lang) {
+          if (!googleTranslateReady) {
+            console.log("Google Translate er ikke klar ennå, prøver igjen...");
+            setTimeout(() => changeLanguage(lang), 500);
+            return;
+          }
+
+          const select = document.querySelector(".goog-te-combo");
+          if (select) {
+            select.value = lang;
+            select.dispatchEvent(new Event("change"));
+            console.log("Språk endret til:", lang);
+
+            // Tving en refresh av oversettelsen
+            if (window.google && google.translate) {
+              google.translate.translatePage();
+            }
+          } else {
+            console.log(
+              "Fant ikke Google Translate select-element - prøver igjen"
+            );
+            setTimeout(() => changeLanguage(lang), 500);
+          }
+        }
+
+        // Last Google Translate
+        function loadGoogleTranslate() {
+          const script = document.createElement("script");
+          script.src =
+            "https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate";
+          script.async = true;
+          document.head.appendChild(script);
+        }
+
+        // Start lasting når dokumentet er klart
+        document.addEventListener("DOMContentLoaded", function () {
+          loadGoogleTranslate();
+
+          // Alternativ initiering hvis callback feiler
+          setTimeout(() => {
+            if (
+              !googleTranslateReady &&
+              typeof google !== "undefined" &&
+              google.translate
+            ) {
+              initGoogleTranslate();
+            }
+          }, 2000);
+        });
+      </script>
+
       <div class="container">
         <nav class="navbar">
           <a href="index.html" class="logo"
