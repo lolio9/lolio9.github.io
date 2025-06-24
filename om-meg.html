@@ -7,7 +7,9 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Om meg | Nettside Eksperten Jonli</title>
+    <title data-translate="about_title">
+      Om meg | Nettside Eksperten Jonli
+    </title>
     <meta
       name="description"
       content="Jeg er Jonli, en 19 år gammel webutvikler som kombinerer skole og entreprenørskap"
@@ -34,26 +36,125 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "AW-17219060462");
     </script>
+    <style>
+      .language-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .language-switcher img {
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        object-fit: cover;
+        transition: transform 0.2s;
+      }
+      .language-switcher img:hover {
+        transform: scale(1.1);
+      }
+      .logo strong {
+        color: #0066cc; /* Blå farge for Jonli */
+      }
+      .about-hero {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        padding: 4rem 0;
+        color: white;
+      }
+      .approach-list li {
+        margin-bottom: 0.5rem;
+      }
+      .approach-list .fa-check {
+        color: #2563eb;
+        margin-right: 0.5rem;
+      }
+      .skill-bar {
+        background: #e5e7eb;
+        height: 8px;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+      }
+      .skill-level {
+        background: #2563eb;
+        height: 100%;
+        border-radius: 4px;
+      }
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin-top: 2rem;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #2563eb;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .timeline-date {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      .timeline-content {
+        padding-left: 20px;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #2563eb;
+        border: 3px solid white;
+      }
+    </style>
   </head>
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
+      <!-- Mine flaggknapper -->
+      <div class="language-switcher">
+        <a href="#" class="language-option" data-lang="no">
+          <img src="R.jpeg" alt="Norsk" title="Norsk" />
+        </a>
+        <a href="#" class="language-option" data-lang="en">
+          <img src="usa-flag.jpg" alt="English" title="English" />
+        </a>
+      </div>
+
       <div class="container">
         <nav class="navbar">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
+          <a href="index.html" class="logo">
+            <span data-translate="logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
 
-          <!-- Kun én navigasjonsliste -->
+          <!-- Navigasjonsliste -->
           <ul class="nav-links" id="navLinks">
-            <!-- <button class="close-menu" id="closeMenu">×</button> -->
-            <li><a href="index.html">Hjem</a></li>
-            <li><a href="tjenester.html">Tjenester</a></li>
-            <li><a href="om-meg.html">Om meg</a></li>
-            <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+            <li><a href="index.html" data-translate="home">Hjem</a></li>
+            <li>
+              <a href="tjenester.html" data-translate="services">Tjenester</a>
+            </li>
+            <li><a href="om-meg.html" data-translate="about">Om meg</a></li>
+            <li>
+              <a href="kontakt.html" class="nav-cta" data-translate="contact"
+                >Kontakt</a
+              >
+            </li>
           </ul>
 
           <!-- Hamburgermeny for mobil -->
@@ -68,30 +169,13 @@
 
     <!-- Hero Section -->
     <main>
-      <section
-        class="about-hero"
-        style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%)"
-      >
+      <section class="about-hero">
         <div class="container">
           <div class="hero-content text-center">
-            <h1
-              style="
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-              "
-            >
+            <h1 data-translate="hero_title">
               Ung entusiasme, profesjonelle resultater
             </h1>
-            <p
-              class="lead"
-              style="
-                font-size: 1.25rem;
-                opacity: 0.9;
-                max-width: 600px;
-                margin: 0 auto;
-              "
-            >
+            <p class="lead" data-translate="hero_subtitle">
               Jeg kombinerer skolegang med entreprenørskap for å skape effektive
               nettlosninger
             </p>
@@ -105,47 +189,49 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-text">
-            <h2>Hei, jeg er Jonli</h2>
-            <p>
+            <h2 data-translate="about_heading">Hei, jeg er Jonli</h2>
+            <p data-translate="about_text1">
               Som en 19-åring som nettopp har fullført videregående, har jeg
               allerede begynt å bygge min egen virksomhet innen webutvikling.
               Selv om jeg er ung, leverer jeg resultater på profesjonelt nivå -
               som nettsiden jeg utviklet for Støren Taxi.
             </p>
 
-            <h3>Min tilnærming</h3>
+            <h3 data-translate="approach_heading">Min tilnærming</h3>
             <ul class="approach-list">
-              <li>
+              <li data-translate="approach1">
                 <i class="fas fa-check"></i> <strong>Moderne</strong> - Bruker
                 de nyeste teknologiene
               </li>
-              <li>
+              <li data-translate="approach2">
                 <i class="fas fa-check"></i> <strong>Rask</strong> - Leverer
                 løsninger innen korte frister
               </li>
-              <li>
+              <li data-translate="approach3">
                 <i class="fas fa-check"></i> <strong>Lærevillig</strong> -
                 Konstant oppdatering av ferdigheter
               </li>
             </ul>
 
             <div class="skills-section">
-              <h3>Mine ferdigheter</h3>
+              <h3 data-translate="skills_heading">Mine ferdigheter</h3>
               <div class="skills-grid">
                 <div class="skill-item">
-                  <div class="skill-name">HTML/CSS</div>
+                  <div class="skill-name" data-translate="skill1">HTML/CSS</div>
                   <div class="skill-bar">
                     <div class="skill-level" style="width: 90%"></div>
                   </div>
                 </div>
                 <div class="skill-item">
-                  <div class="skill-name">JavaScript</div>
+                  <div class="skill-name" data-translate="skill2">
+                    JavaScript
+                  </div>
                   <div class="skill-bar">
                     <div class="skill-level" style="width: 75%"></div>
                   </div>
                 </div>
                 <div class="skill-item">
-                  <div class="skill-name">SEO</div>
+                  <div class="skill-name" data-translate="skill3">SEO</div>
                   <div class="skill-bar">
                     <div class="skill-level" style="width: 80%"></div>
                   </div>
@@ -153,66 +239,57 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="about-image">
-            <div class="image-frame"> -->
-          <!-- Bytt ut med din egen bildebane -->
-          <!-- <img
-                src="assets/images/jonli-profil.jpg"
-                alt="Jonli - Nettsideekspert"
-                loading="lazy"
-              /> -->
-          <!-- I om-meg.html eller andre filer med bilder -->
-          <!-- <picture>
-                <source
-                  media="(min-width: 1024px)"
-                  srcset="assets/images/bilde-desktop.jpg"
-                />
-                <img
-                  src="assets/images/bilde-mobil.jpg"
-                  alt="Beskrivelse"
-                  style="max-width: 100%"
-                />
-              </picture>
-            </div>
-          </div> -->
         </div>
 
         <div class="experience-section">
-          <h2>Min reise</h2>
+          <h2 data-translate="journey_heading">Min reise</h2>
           <div class="timeline">
             <div class="timeline-item">
-              <div class="timeline-date">2025 - Nå</div>
+              <div class="timeline-date" data-translate="timeline1_date">
+                2025 - Nå
+              </div>
               <div class="timeline-content">
-                <h3>Nettside Eksperten Jonli</h3>
-                <p>
+                <h3 data-translate="timeline1_title">
+                  Nettside Eksperten Jonli
+                </h3>
+                <p data-translate="timeline1_text">
                   Registrert min egen virksomhet og hjelper kunder med
                   nettløsninger
                 </p>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">2024</div>
+              <div class="timeline-date" data-translate="timeline2_date">
+                2024
+              </div>
               <div class="timeline-content">
-                <h3>Støren Taxi nettside</h3>
-                <p>Utviklet komplett nettside for lokal taxitjeneste</p>
+                <h3 data-translate="timeline2_title">Støren Taxi nettside</h3>
+                <p data-translate="timeline2_text">
+                  Utviklet komplett nettside for lokal taxitjeneste
+                </p>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">2023-2025</div>
+              <div class="timeline-date" data-translate="timeline3_date">
+                2023-2025
+              </div>
               <div class="timeline-content">
-                <h3>Videregående skole</h3>
-                <p>
+                <h3 data-translate="timeline3_title">Videregående skole</h3>
+                <p data-translate="timeline3_text">
                   Fullførte studiespesialisering med fokus på
                   informasjonsteknologi
                 </p>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">2021</div>
+              <div class="timeline-date" data-translate="timeline4_date">
+                2021
+              </div>
               <div class="timeline-content">
-                <h3>Første nettsideprosjekt</h3>
-                <p>Lagde min første nettside</p>
+                <h3 data-translate="timeline4_title">
+                  Første nettsideprosjekt
+                </h3>
+                <p data-translate="timeline4_text">Lagde min første nettside</p>
               </div>
             </div>
           </div>
@@ -224,9 +301,16 @@
     <section class="cta about-cta">
       <div class="container">
         <div class="cta-content text-center">
-          <h2>Klar for en unik nettopplevelse?</h2>
-          <p>Jeg leverer friske idéer kombinert med solid teknologikunnskap</p>
-          <a href="kontakt.html" class="btn btn-primary">Kontakt meg</a>
+          <h2 data-translate="cta_title">Klar for en unik nettopplevelse?</h2>
+          <p data-translate="cta_text">
+            Jeg leverer friske idéer kombinert med solid teknologikunnskap
+          </p>
+          <a
+            href="kontakt.html"
+            class="btn btn-primary"
+            data-translate="cta_button"
+            >Kontakt meg</a
+          >
         </div>
       </div>
     </section>
@@ -235,29 +319,172 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content text-center">
-          <a href="index.html" class="logo"
-            >Nettside Eksperten <strong>Jonli</strong></a
-          >
-          <p>Profesjonelle nettsideløsninger siden 2025</p>
+          <a href="index.html" class="logo">
+            <span data-translate="footer_logo">Nettside Eksperten</span>
+            <strong>Jonli</strong>
+          </a>
+          <p data-translate="footer_text">
+            Profesjonelle nettsideløsninger siden 2025
+          </p>
 
           <div class="footer-links">
-            <a href="tjenester.html">Tjenester</a>
-            <a href="om-meg.html">Om meg</a>
-            <a href="kontakt.html">Kontakt</a>
+            <a href="tjenester.html" data-translate="footer_services"
+              >Tjenester</a
+            >
+            <a href="om-meg.html" data-translate="footer_about">Om meg</a>
+            <a href="kontakt.html" data-translate="footer_contact">Kontakt</a>
           </div>
 
-          <p class="copyright">
+          <p class="copyright" data-translate="copyright">
             &copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.
           </p>
         </div>
       </div>
     </footer>
-    <!-- JavaScript for hamburgermeny -->
+
+    <!-- JavaScript for språkbytte og hamburgermeny -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // Oversettelsesdata
+      const translations = {
+        no: {
+          about_title: "Om meg | Nettside Eksperten Jonli",
+          logo: "Nettside Eksperten",
+          home: "Hjem",
+          services: "Tjenester",
+          about: "Om meg",
+          contact: "Kontakt",
+          hero_title: "Ung entusiasme, profesjonelle resultater",
+          hero_subtitle:
+            "Jeg kombinerer skolegang med entreprenørskap for å skape effektive nettlosninger",
+          about_heading: "Hei, jeg er Jonli",
+          about_text1:
+            "Som en 19-åring som nettopp har fullført videregående, har jeg allerede begynt å bygge min egen virksomhet innen webutvikling. Selv om jeg er ung, leverer jeg resultater på profesjonelt nivå - som nettsiden jeg utviklet for Støren Taxi.",
+          approach_heading: "Min tilnærming",
+          approach1:
+            "<i class='fas fa-check'></i> <strong>Moderne</strong> - Bruker de nyeste teknologiene",
+          approach2:
+            "<i class='fas fa-check'></i> <strong>Rask</strong> - Leverer løsninger innen korte frister",
+          approach3:
+            "<i class='fas fa-check'></i> <strong>Lærevillig</strong> - Konstant oppdatering av ferdigheter",
+          skills_heading: "Mine ferdigheter",
+          skill1: "HTML/CSS",
+          skill2: "JavaScript",
+          skill3: "SEO",
+          journey_heading: "Min reise",
+          timeline1_date: "2025 - Nå",
+          timeline1_title: "Nettside Eksperten Jonli",
+          timeline1_text:
+            "Registrert min egen virksomhet og hjelper kunder med nettløsninger",
+          timeline2_date: "2024",
+          timeline2_title: "Støren Taxi nettside",
+          timeline2_text: "Utviklet komplett nettside for lokal taxitjeneste",
+          timeline3_date: "2023-2025",
+          timeline3_title: "Videregående skole",
+          timeline3_text:
+            "Fullførte studiespesialisering med fokus på informasjonsteknologi",
+          timeline4_date: "2021",
+          timeline4_title: "Første nettsideprosjekt",
+          timeline4_text: "Lagde min første nettside",
+          cta_title: "Klar for en unik nettopplevelse?",
+          cta_text:
+            "Jeg leverer friske idéer kombinert med solid teknologikunnskap",
+          cta_button: "Kontakt meg",
+          footer_logo: "Nettside Eksperten",
+          footer_text: "Profesjonelle nettsideløsninger siden 2025",
+          footer_services: "Tjenester",
+          footer_about: "Om meg",
+          footer_contact: "Kontakt",
+          copyright:
+            "&copy; 2025 Nettside Eksperten Jonli. Alle rettigheter reservert.",
+        },
+        en: {
+          about_title: "About | Website Expert Jonli",
+          logo: "Website Expert",
+          home: "Home",
+          services: "Services",
+          about: "About me",
+          contact: "Contact",
+          hero_title: "Young enthusiasm, professional results",
+          hero_subtitle:
+            "I combine education with entrepreneurship to create effective web solutions",
+          about_heading: "Hi, I'm Jonli",
+          about_text1:
+            "As a 19-year-old who just graduated from high school, I've already started building my own web development business. Although I'm young, I deliver results at a professional level - like the website I developed for Støren Taxi.",
+          approach_heading: "My approach",
+          approach1:
+            "<i class='fas fa-check'></i> <strong>Modern</strong> - Using the latest technologies",
+          approach2:
+            "<i class='fas fa-check'></i> <strong>Fast</strong> - Deliver solutions within short deadlines",
+          approach3:
+            "<i class='fas fa-check'></i> <strong>Eager to learn</strong> - Constantly updating my skills",
+          skills_heading: "My skills",
+          skill1: "HTML/CSS",
+          skill2: "JavaScript",
+          skill3: "SEO",
+          journey_heading: "My journey",
+          timeline1_date: "2025 - Now",
+          timeline1_title: "Website Expert Jonli",
+          timeline1_text:
+            "Registered my own business helping customers with web solutions",
+          timeline2_date: "2024",
+          timeline2_title: "Støren Taxi website",
+          timeline2_text: "Developed complete website for local taxi service",
+          timeline3_date: "2023-2025",
+          timeline3_title: "High school",
+          timeline3_text:
+            "Completed general studies with focus on information technology",
+          timeline4_date: "2021",
+          timeline4_title: "First web project",
+          timeline4_text: "Created my first website",
+          cta_title: "Ready for a unique web experience?",
+          cta_text:
+            "I deliver fresh ideas combined with solid technology knowledge",
+          cta_button: "Contact me",
+          footer_logo: "Website Expert",
+          footer_text: "Professional website solutions since 2025",
+          footer_services: "Services",
+          footer_about: "About me",
+          footer_contact: "Contact",
+          copyright: "&copy; 2025 Website Expert Jonli. All rights reserved.",
+        },
+      };
+
+      // Bytt språk
+      function changeLanguage(lang) {
+        // Oppdater alle oversettbare elementer
+        document.querySelectorAll("[data-translate]").forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          if (translations[lang] && translations[lang][key]) {
+            if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+              element.setAttribute("placeholder", translations[lang][key]);
+            } else {
+              element.innerHTML = translations[lang][key];
+            }
+          }
+        });
+
+        // Oppdater tittel
+        document.title = translations[lang].about_title;
+
+        localStorage.setItem("language", lang);
+      }
+
+      // Last inn språk ved oppstart
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("language") || "no";
+        changeLanguage(savedLang);
+
+        // Klikk-event for språkknapper
+        document.querySelectorAll(".language-option").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            changeLanguage(button.getAttribute("data-lang"));
+          });
+        });
+
+        // Hamburgermeny funksjonalitet
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
-        const closeMenu = document.getElementById("closeMenu");
         const overlay = document.createElement("div");
         overlay.className = "overlay";
         document.body.appendChild(overlay);
@@ -272,7 +499,6 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
-        closeMenu.addEventListener("click", toggleMenu);
         overlay.addEventListener("click", toggleMenu);
 
         navLinks.addEventListener("click", function (e) {
