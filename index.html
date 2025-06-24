@@ -39,12 +39,12 @@
     </script>
     <style>
       .language-switcher {
-        position: fixed;
-        top: 20px;
-        right: 20px;
         display: flex;
-        gap: 10px;
-        z-index: 1000;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 10px 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
       }
       .language-switcher img {
         width: 30px;
@@ -59,9 +59,8 @@
         transform: scale(1.1);
       }
       .logo strong {
-        color: #0066cc; /* Blå farge for Jonli */
+        color: #0066cc;
       }
-
       .about-hero {
         background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
         padding: 4rem 0;
@@ -71,17 +70,13 @@
       /* Mobiltilpasning */
       @media (max-width: 768px) {
         .language-switcher {
-          top: 10px;
-          right: 10px;
-          gap: 10px;
-          padding: 6px;
+          justify-content: center;
+          padding: 8px 10px;
+          gap: 15px;
         }
         .language-switcher img {
-          width: 32px;
-          height: 21px;
-        }
-        header {
-          padding-top: 50px; /* Gir plass til flaggknappene */
+          width: 36px;
+          height: 24px;
         }
       }
     </style>
@@ -89,16 +84,6 @@
   <body>
     <!-- ===== HEADER ===== -->
     <header class="header">
-      <!-- Mine flaggknapper -->
-      <div class="language-switcher">
-        <a href="#" class="language-option" data-lang="no">
-          <img src="R.jpeg" alt="Norsk" title="Norsk" />
-        </a>
-        <a href="#" class="language-option" data-lang="en">
-          <img src="usa-flag.jpg" alt="English" title="English" />
-        </a>
-      </div>
-
       <div class="container">
         <nav class="navbar">
           <a href="index.html" class="logo">
@@ -127,6 +112,15 @@
             </span>
           </button>
         </nav>
+
+        <div class="language-switcher">
+          <a href="#" class="language-option" data-lang="no">
+            <img src="R.jpeg" alt="Norsk" title="Norsk" />
+          </a>
+          <a href="#" class="language-option" data-lang="en">
+            <img src="usa-flag.jpg" alt="English" title="English" />
+          </a>
+        </div>
       </div>
     </header>
 
